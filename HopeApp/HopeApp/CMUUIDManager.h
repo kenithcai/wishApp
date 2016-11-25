@@ -9,5 +9,14 @@
 #ifndef CMUUIDManager_h
 #define CMUUIDManager_h
 
+@interface CMUUIDManager : NSObject
+
++(void)saveUUID:(NSString *)uuid;
+
++(id)readUUID;
+
++(void)deleteUUID;
+
+@end
 
 #endif /* CMUUIDManager_h */

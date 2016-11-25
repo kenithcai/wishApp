@@ -91,6 +91,9 @@ class ViewController: UIViewController {
         g_shareBtn.isHidden = show
         g_labView?.isHidden = show
         
+        if (g_imageView == nil) {
+            return
+        }
         let view = g_imageView!.viewWithTag(GaussianBlurTag)
         if (view != nil) {
             view?.removeFromSuperview()
@@ -102,6 +105,11 @@ class ViewController: UIViewController {
         
         AppUtil.gaussianBlur(view: g_imageView!)
         AppUtil.addView(vc: self, name: "ShareViewController",closure: {self.showInfo(show: false)})
+        
+//        WeixinSdk.instance().sendText("哈哈test", in: WXSceneSession)
+//        let path = Bundle.main.path(forResource: "preset_bg_7", ofType: "jpg")
+        let img = AppUtil.screenShots()
+        WeixinSdk.instance().sendImg(UIImagePNGRepresentation(img), in: WXSceneTimeline)
     }
     // 设置页面
     @IBAction func clickSetting(_ sender: UIButton) {

@@ -3,3 +3,4 @@
 //
 
 #import "WeixinSdk.h"
+#import "CMUUIDManager.h"

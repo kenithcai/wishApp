@@ -17,9 +17,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        let uuid = UUID().uuidString
+        let str = CMUUIDManager.readUUID()
+        if str == nil
+        {
+            CMUUIDManager.deleteUUID()
+            CMUUIDManager.saveUUID(uuid)
+        }
+        if CMUUIDManager.readUUID() != nil
+        {
+            print(CMUUIDManager.readUUID())
+        }
+        
+//        BA535B04-9F90-4818-8EFC-7D216BCC47BE
+        WeixinSdk.instance().initSdk()
+//        WeixinSdk.instance().loginWx()
         return true
     }
-
+    
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        return WeixinSdk.handleOpen(url)
+//        return WXApi.handleOpenURL(url, delegate: self)
+    }
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return WeixinSdk.handleOpen(url)
+    }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
