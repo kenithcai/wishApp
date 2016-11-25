@@ -1,0 +1,808 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		622C9B3EA5E8F190D20A28ED /* Pods_HopeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD0A91DF419D0A0542C3082 /* Pods_HopeAppTests.framework */; };
+		7742BAE29093FDD33B181EC2 /* Pods_HopeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838B5F4006166D4DCF3C1E44 /* Pods_HopeApp.framework */; };
+		8E34775ED7862048AF3A8FFE /* Pods_HopeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E9DD43E7EF11309F655368 /* Pods_HopeAppUITests.framework */; };
+		D41FCC1F1DCDB993001F6C94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41FCC1E1DCDB993001F6C94 /* AppDelegate.swift */; };
+		D41FCC211DCDB993001F6C94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41FCC201DCDB993001F6C94 /* ViewController.swift */; };
+		D41FCC241DCDB993001F6C94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41FCC221DCDB993001F6C94 /* Main.storyboard */; };
+		D41FCC271DCDB993001F6C94 /* HopeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D41FCC251DCDB993001F6C94 /* HopeApp.xcdatamodeld */; };
+		D41FCC291DCDB993001F6C94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D41FCC281DCDB993001F6C94 /* Assets.xcassets */; };
+		D41FCC2C1DCDB993001F6C94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41FCC2A1DCDB993001F6C94 /* LaunchScreen.storyboard */; };
+		D483E6241DDEA76100093C09 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D483E6231DDEA76100093C09 /* BaseViewController.swift */; };
+		D483E67B1DE00A6400093C09 /* WeixinSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = D483E67A1DE00A6400093C09 /* WeixinSdk.m */; };
+		D483E6821DE0306D00093C09 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D483E67D1DE0306D00093C09 /* libWeChatSDK.a */; };
+		D483E6831DE0306D00093C09 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = D483E67E1DE0306D00093C09 /* README.txt */; };
+		D483E6851DE030DF00093C09 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D483E6841DE030DF00093C09 /* SystemConfiguration.framework */; };
+		D483E6871DE0311B00093C09 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D483E6861DE0311B00093C09 /* libsqlite3.0.tbd */; };
+		D483E6891DE0312400093C09 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D483E6881DE0312400093C09 /* libz.tbd */; };
+		D483E68B1DE0313600093C09 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D483E68A1DE0313600093C09 /* libc++.tbd */; };
+		D483E68D1DE0314200093C09 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D483E68C1DE0314200093C09 /* Security.framework */; };
+		D483E68F1DE0314E00093C09 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D483E68E1DE0314E00093C09 /* CoreTelephony.framework */; };
+		D483E6911DE0315700093C09 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D483E6901DE0315700093C09 /* CFNetwork.framework */; };
+		D4CC592B1DD062D00055C317 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CC592A1DD062D00055C317 /* SettingViewController.swift */; };
+		D4CC592D1DD062DE0055C317 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CC592C1DD062DE0055C317 /* ShareViewController.swift */; };
+		D4CCAD951DDDC90C004CDED0 /* AppUItil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D41FCC331DCDB993001F6C94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41FCC131DCDB993001F6C94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D41FCC1A1DCDB993001F6C94;
+			remoteInfo = HopeApp;
+		};
+		D41FCC3E1DCDB993001F6C94 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41FCC131DCDB993001F6C94 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D41FCC1A1DCDB993001F6C94;
+			remoteInfo = HopeApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		13FC5A6E761C6BC6666A5D62 /* Pods-HopeApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopeApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HopeApp/Pods-HopeApp.debug.xcconfig"; sourceTree = "<group>"; };
+		1F96EDF711309C2C5A3F53DC /* Pods-HopeAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopeAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HopeAppTests/Pods-HopeAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		35BFCF82C23EE6367E9407F5 /* Pods-HopeAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopeAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HopeAppUITests/Pods-HopeAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		583AC77F3BE7E2D77D59C8CE /* Pods-HopeApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopeApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-HopeApp/Pods-HopeApp.release.xcconfig"; sourceTree = "<group>"; };
+		64E9DD43E7EF11309F655368 /* Pods_HopeAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HopeAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		83618FA556FFE4FBC65C4ADD /* Pods-HopeAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopeAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HopeAppTests/Pods-HopeAppTests.debug.xcconfig"; sourceTree = "<group>"; };
+		838B5F4006166D4DCF3C1E44 /* Pods_HopeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HopeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		96C95A4B6BC2F4B4DDFD9300 /* Pods-HopeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopeAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HopeAppUITests/Pods-HopeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
+		AAD0A91DF419D0A0542C3082 /* Pods_HopeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HopeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D41FCC1B1DCDB993001F6C94 /* HopeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HopeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D41FCC1E1DCDB993001F6C94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D41FCC201DCDB993001F6C94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D41FCC231DCDB993001F6C94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D41FCC261DCDB993001F6C94 /* HopeApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HopeApp.xcdatamodel; sourceTree = "<group>"; };
+		D41FCC281DCDB993001F6C94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D41FCC2B1DCDB993001F6C94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D41FCC2D1DCDB993001F6C94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D41FCC321DCDB993001F6C94 /* HopeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HopeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D41FCC3D1DCDB993001F6C94 /* HopeAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HopeAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D483E6231DDEA76100093C09 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D483E6791DE00A6300093C09 /* HopeApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HopeApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		D483E67A1DE00A6400093C09 /* WeixinSdk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WeixinSdk.m; sourceTree = "<group>"; };
+		D483E67D1DE0306D00093C09 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		D483E67E1DE0306D00093C09 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		D483E67F1DE0306D00093C09 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		D483E6801DE0306D00093C09 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		D483E6811DE0306D00093C09 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		D483E6841DE030DF00093C09 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		D483E6861DE0311B00093C09 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		D483E6881DE0312400093C09 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		D483E68A1DE0313600093C09 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		D483E68C1DE0314200093C09 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		D483E68E1DE0314E00093C09 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		D483E6901DE0315700093C09 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D483E6921DE032FA00093C09 /* WeixinSdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeixinSdk.h; sourceTree = "<group>"; };
+		D4CC592A1DD062D00055C317 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		D4CC592C1DD062DE0055C317 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUItil.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D41FCC181DCDB993001F6C94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D483E6911DE0315700093C09 /* CFNetwork.framework in Frameworks */,
+				D483E68F1DE0314E00093C09 /* CoreTelephony.framework in Frameworks */,
+				D483E68D1DE0314200093C09 /* Security.framework in Frameworks */,
+				D483E68B1DE0313600093C09 /* libc++.tbd in Frameworks */,
+				D483E6891DE0312400093C09 /* libz.tbd in Frameworks */,
+				D483E6871DE0311B00093C09 /* libsqlite3.0.tbd in Frameworks */,
+				D483E6851DE030DF00093C09 /* SystemConfiguration.framework in Frameworks */,
+				D483E6821DE0306D00093C09 /* libWeChatSDK.a in Frameworks */,
+				7742BAE29093FDD33B181EC2 /* Pods_HopeApp.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D41FCC2F1DCDB993001F6C94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				622C9B3EA5E8F190D20A28ED /* Pods_HopeAppTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D41FCC3A1DCDB993001F6C94 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8E34775ED7862048AF3A8FFE /* Pods_HopeAppUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A1CD76419E53023021F4E409 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				13FC5A6E761C6BC6666A5D62 /* Pods-HopeApp.debug.xcconfig */,
+				583AC77F3BE7E2D77D59C8CE /* Pods-HopeApp.release.xcconfig */,
+				83618FA556FFE4FBC65C4ADD /* Pods-HopeAppTests.debug.xcconfig */,
+				1F96EDF711309C2C5A3F53DC /* Pods-HopeAppTests.release.xcconfig */,
+				35BFCF82C23EE6367E9407F5 /* Pods-HopeAppUITests.debug.xcconfig */,
+				96C95A4B6BC2F4B4DDFD9300 /* Pods-HopeAppUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A7040A7A28DC46C815BD1CE9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D483E6901DE0315700093C09 /* CFNetwork.framework */,
+				D483E68E1DE0314E00093C09 /* CoreTelephony.framework */,
+				D483E68C1DE0314200093C09 /* Security.framework */,
+				D483E68A1DE0313600093C09 /* libc++.tbd */,
+				D483E6881DE0312400093C09 /* libz.tbd */,
+				D483E6861DE0311B00093C09 /* libsqlite3.0.tbd */,
+				D483E6841DE030DF00093C09 /* SystemConfiguration.framework */,
+				838B5F4006166D4DCF3C1E44 /* Pods_HopeApp.framework */,
+				AAD0A91DF419D0A0542C3082 /* Pods_HopeAppTests.framework */,
+				64E9DD43E7EF11309F655368 /* Pods_HopeAppUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D41FCC121DCDB993001F6C94 = {
+			isa = PBXGroup;
+			children = (
+				D483E67C1DE0306D00093C09 /* OpenSDK1.7.4 */,
+				D41FCC1D1DCDB993001F6C94 /* HopeApp */,
+				D41FCC1C1DCDB993001F6C94 /* Products */,
+				A1CD76419E53023021F4E409 /* Pods */,
+				A7040A7A28DC46C815BD1CE9 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D41FCC1C1DCDB993001F6C94 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D41FCC1B1DCDB993001F6C94 /* HopeApp.app */,
+				D41FCC321DCDB993001F6C94 /* HopeAppTests.xctest */,
+				D41FCC3D1DCDB993001F6C94 /* HopeAppUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D41FCC1D1DCDB993001F6C94 /* HopeApp */ = {
+			isa = PBXGroup;
+			children = (
+				D41FCC1E1DCDB993001F6C94 /* AppDelegate.swift */,
+				D41FCC201DCDB993001F6C94 /* ViewController.swift */,
+				D41FCC221DCDB993001F6C94 /* Main.storyboard */,
+				D41FCC281DCDB993001F6C94 /* Assets.xcassets */,
+				D41FCC2A1DCDB993001F6C94 /* LaunchScreen.storyboard */,
+				D41FCC2D1DCDB993001F6C94 /* Info.plist */,
+				D41FCC251DCDB993001F6C94 /* HopeApp.xcdatamodeld */,
+				D4CC592A1DD062D00055C317 /* SettingViewController.swift */,
+				D4CC592C1DD062DE0055C317 /* ShareViewController.swift */,
+				D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */,
+				D483E6231DDEA76100093C09 /* BaseViewController.swift */,
+				D483E6921DE032FA00093C09 /* WeixinSdk.h */,
+				D483E67A1DE00A6400093C09 /* WeixinSdk.m */,
+				D483E6791DE00A6300093C09 /* HopeApp-Bridging-Header.h */,
+			);
+			path = HopeApp;
+			sourceTree = "<group>";
+		};
+		D483E67C1DE0306D00093C09 /* OpenSDK1.7.4 */ = {
+			isa = PBXGroup;
+			children = (
+				D483E67D1DE0306D00093C09 /* libWeChatSDK.a */,
+				D483E67E1DE0306D00093C09 /* README.txt */,
+				D483E67F1DE0306D00093C09 /* WechatAuthSDK.h */,
+				D483E6801DE0306D00093C09 /* WXApi.h */,
+				D483E6811DE0306D00093C09 /* WXApiObject.h */,
+			);
+			path = OpenSDK1.7.4;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D41FCC1A1DCDB993001F6C94 /* HopeApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D41FCC461DCDB993001F6C94 /* Build configuration list for PBXNativeTarget "HopeApp" */;
+			buildPhases = (
+				B642FB1F08D4537434D7FC9C /* [CP] Check Pods Manifest.lock */,
+				D41FCC171DCDB993001F6C94 /* Sources */,
+				D41FCC181DCDB993001F6C94 /* Frameworks */,
+				D41FCC191DCDB993001F6C94 /* Resources */,
+				373247CA6544F5222B422572 /* [CP] Embed Pods Frameworks */,
+				CF403C55D44B6E98CF6AF881 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HopeApp;
+			productName = HopeApp;
+			productReference = D41FCC1B1DCDB993001F6C94 /* HopeApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D41FCC311DCDB993001F6C94 /* HopeAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D41FCC491DCDB993001F6C94 /* Build configuration list for PBXNativeTarget "HopeAppTests" */;
+			buildPhases = (
+				8F1C6CFD9AC6B5F756BE4D86 /* [CP] Check Pods Manifest.lock */,
+				D41FCC2E1DCDB993001F6C94 /* Sources */,
+				D41FCC2F1DCDB993001F6C94 /* Frameworks */,
+				D41FCC301DCDB993001F6C94 /* Resources */,
+				D77991FABB87B5AF67EA3E04 /* [CP] Embed Pods Frameworks */,
+				B18B9C9164F71649CA4A68FF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D41FCC341DCDB993001F6C94 /* PBXTargetDependency */,
+			);
+			name = HopeAppTests;
+			productName = HopeAppTests;
+			productReference = D41FCC321DCDB993001F6C94 /* HopeAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D41FCC3C1DCDB993001F6C94 /* HopeAppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D41FCC4C1DCDB993001F6C94 /* Build configuration list for PBXNativeTarget "HopeAppUITests" */;
+			buildPhases = (
+				85266A8A85C9E196F9A2FF05 /* [CP] Check Pods Manifest.lock */,
+				D41FCC391DCDB993001F6C94 /* Sources */,
+				D41FCC3A1DCDB993001F6C94 /* Frameworks */,
+				D41FCC3B1DCDB993001F6C94 /* Resources */,
+				8EE384FD286DAE4746D0A392 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D41FCC3F1DCDB993001F6C94 /* PBXTargetDependency */,
+			);
+			name = HopeAppUITests;
+			productName = HopeAppUITests;
+			productReference = D41FCC3D1DCDB993001F6C94 /* HopeAppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41FCC131DCDB993001F6C94 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = KenithCai;
+				TargetAttributes = {
+					D41FCC1A1DCDB993001F6C94 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 87H52E59T7;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+					};
+					D41FCC311DCDB993001F6C94 = {
+						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D41FCC1A1DCDB993001F6C94;
+					};
+					D41FCC3C1DCDB993001F6C94 = {
+						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+						TestTargetID = D41FCC1A1DCDB993001F6C94;
+					};
+				};
+			};
+			buildConfigurationList = D41FCC161DCDB993001F6C94 /* Build configuration list for PBXProject "HopeApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D41FCC121DCDB993001F6C94;
+			productRefGroup = D41FCC1C1DCDB993001F6C94 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D41FCC1A1DCDB993001F6C94 /* HopeApp */,
+				D41FCC311DCDB993001F6C94 /* HopeAppTests */,
+				D41FCC3C1DCDB993001F6C94 /* HopeAppUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D41FCC191DCDB993001F6C94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D41FCC2C1DCDB993001F6C94 /* LaunchScreen.storyboard in Resources */,
+				D41FCC291DCDB993001F6C94 /* Assets.xcassets in Resources */,
+				D483E6831DE0306D00093C09 /* README.txt in Resources */,
+				D41FCC241DCDB993001F6C94 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D41FCC301DCDB993001F6C94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D41FCC3B1DCDB993001F6C94 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		373247CA6544F5222B422572 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HopeApp/Pods-HopeApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85266A8A85C9E196F9A2FF05 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8EE384FD286DAE4746D0A392 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HopeAppUITests/Pods-HopeAppUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F1C6CFD9AC6B5F756BE4D86 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B18B9C9164F71649CA4A68FF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HopeAppTests/Pods-HopeAppTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B642FB1F08D4537434D7FC9C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CF403C55D44B6E98CF6AF881 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HopeApp/Pods-HopeApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D77991FABB87B5AF67EA3E04 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HopeAppTests/Pods-HopeAppTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D41FCC171DCDB993001F6C94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D41FCC211DCDB993001F6C94 /* ViewController.swift in Sources */,
+				D41FCC271DCDB993001F6C94 /* HopeApp.xcdatamodeld in Sources */,
+				D4CC592D1DD062DE0055C317 /* ShareViewController.swift in Sources */,
+				D41FCC1F1DCDB993001F6C94 /* AppDelegate.swift in Sources */,
+				D483E67B1DE00A6400093C09 /* WeixinSdk.m in Sources */,
+				D4CC592B1DD062D00055C317 /* SettingViewController.swift in Sources */,
+				D483E6241DDEA76100093C09 /* BaseViewController.swift in Sources */,
+				D4CCAD951DDDC90C004CDED0 /* AppUItil.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D41FCC2E1DCDB993001F6C94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D41FCC391DCDB993001F6C94 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D41FCC341DCDB993001F6C94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D41FCC1A1DCDB993001F6C94 /* HopeApp */;
+			targetProxy = D41FCC331DCDB993001F6C94 /* PBXContainerItemProxy */;
+		};
+		D41FCC3F1DCDB993001F6C94 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D41FCC1A1DCDB993001F6C94 /* HopeApp */;
+			targetProxy = D41FCC3E1DCDB993001F6C94 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D41FCC221DCDB993001F6C94 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D41FCC231DCDB993001F6C94 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D41FCC2A1DCDB993001F6C94 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D41FCC2B1DCDB993001F6C94 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D41FCC441DCDB993001F6C94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D41FCC451DCDB993001F6C94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D41FCC471DCDB993001F6C94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 13FC5A6E761C6BC6666A5D62 /* Pods-HopeApp.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 87H52E59T7;
+				INFOPLIST_FILE = HopeApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OpenSDK1.7.4",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"Kingfisher\"",
+					"-Objc",
+					"-all_load",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fingertip.HopeApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HopeApp/HopeApp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		D41FCC481DCDB993001F6C94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 583AC77F3BE7E2D77D59C8CE /* Pods-HopeApp.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				DEVELOPMENT_TEAM = 87H52E59T7;
+				INFOPLIST_FILE = HopeApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/OpenSDK1.7.4",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"Alamofire\"",
+					"-framework",
+					"\"Kingfisher\"",
+					"-Objc",
+					"-all_load",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fingertip.HopeApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HopeApp/HopeApp-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		D41FCC4A1DCDB993001F6C94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 83618FA556FFE4FBC65C4ADD /* Pods-HopeAppTests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HopeAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fingertip.HopeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HopeApp.app/HopeApp";
+			};
+			name = Debug;
+		};
+		D41FCC4B1DCDB993001F6C94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F96EDF711309C2C5A3F53DC /* Pods-HopeAppTests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HopeAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fingertip.HopeAppTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HopeApp.app/HopeApp";
+			};
+			name = Release;
+		};
+		D41FCC4D1DCDB993001F6C94 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35BFCF82C23EE6367E9407F5 /* Pods-HopeAppUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = HopeAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fingertip.HopeAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = HopeApp;
+			};
+			name = Debug;
+		};
+		D41FCC4E1DCDB993001F6C94 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96C95A4B6BC2F4B4DDFD9300 /* Pods-HopeAppUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				INFOPLIST_FILE = HopeAppUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = fingertip.HopeAppUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = HopeApp;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D41FCC161DCDB993001F6C94 /* Build configuration list for PBXProject "HopeApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D41FCC441DCDB993001F6C94 /* Debug */,
+				D41FCC451DCDB993001F6C94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D41FCC461DCDB993001F6C94 /* Build configuration list for PBXNativeTarget "HopeApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D41FCC471DCDB993001F6C94 /* Debug */,
+				D41FCC481DCDB993001F6C94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D41FCC491DCDB993001F6C94 /* Build configuration list for PBXNativeTarget "HopeAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D41FCC4A1DCDB993001F6C94 /* Debug */,
+				D41FCC4B1DCDB993001F6C94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D41FCC4C1DCDB993001F6C94 /* Build configuration list for PBXNativeTarget "HopeAppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D41FCC4D1DCDB993001F6C94 /* Debug */,
+				D41FCC4E1DCDB993001F6C94 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D41FCC251DCDB993001F6C94 /* HopeApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D41FCC261DCDB993001F6C94 /* HopeApp.xcdatamodel */,
+			);
+			currentVersion = D41FCC261DCDB993001F6C94 /* HopeApp.xcdatamodel */;
+			path = HopeApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = D41FCC131DCDB993001F6C94 /* Project object */;
+}

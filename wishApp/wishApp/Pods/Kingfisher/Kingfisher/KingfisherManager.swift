@@ -26,8 +26,8 @@
 
 import UIKit
 
-public typealias DownloadProgressBlock = ((receivedSize: Int64, totalSize: Int64) -> ())
-public typealias CompletionHandler = ((image: UIImage?, error: NSError?, cacheType: CacheType, imageURL: NSURL?) -> ())
+public typealias DownloadProgressBlock = ((_ receivedSize: Int64, _ totalSize: Int64) -> ())
+public typealias CompletionHandler = ((_ image: UIImage?, _ error: NSError?, _ cacheType: CacheType, _ imageURL: NSURL?) -> ())
 
 /// RetrieveImageTask represents a task of image retrieving process.
 /// It contains an async task of getting image from disk and from network.
@@ -190,7 +190,7 @@ public class KingfisherManager {
             },
             completionHandler: { image, error, imageURL, originalData in
 
-                if let error = error where error.code == KingfisherError.NotModified.rawValue {
+                if let error = error, error.code == KingfisherError.NotModified.rawValue {
                     // Not modified. Try to find the image from cache.
                     // (The image should be in cache. It should be guaranteed by the framework users.)
                     targetCache.retrieveImageForKey(key, options: options, completionHandler: { (cacheImage, cacheType) -> () in
@@ -200,7 +200,7 @@ public class KingfisherManager {
                     return
                 }
                 
-                if let image = image, originalData = originalData {
+                if let image = image, let originalData = originalData {
                     targetCache.storeImage(image, originalData: originalData, forKey: key, toDisk: !options.cacheMemoryOnly, completionHandler: nil)
                 }
                 
@@ -277,7 +277,7 @@ public class KingfisherManager {
 
 // MARK: - Deprecated
 public extension KingfisherManager {
-    @available(*, deprecated=1.2, message="Use -retrieveImageWithURL:optionsInfo:progressBlock:completionHandler: instead.")
+    @available(*, deprecated: 1.2, message: "Use -retrieveImageWithURL:optionsInfo:progressBlock:completionHandler: instead.")
     public func retrieveImageWithURL(URL: NSURL,
                                  options: KingfisherOptions,
                            progressBlock: DownloadProgressBlock?,

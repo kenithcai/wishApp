@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Setting View Controller-->
+        <scene sceneID="Xqi-RZ-GeA">
+            <objects>
+                <viewController storyboardIdentifier="SettingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="qVz-Np-JnD" customClass="SettingViewController" customModule="HopeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ot6-B6-DQ7"/>
+                        <viewControllerLayoutGuide type="bottom" id="AbN-8c-Nl1"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OqK-0Q-6AF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BM9-8w-Puh" userLabel="afda" colorLabel="IBBuiltInLabel-Red">
+                                <rect key="frame" x="16" y="286" width="343" height="343"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="qVz-Np-JnD" id="AK5-rY-329"/>
+                                    <outlet property="delegate" destination="qVz-Np-JnD" id="74I-Qo-aiP"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNh-UZ-VGR">
+                                <rect key="frame" x="16" y="28" width="20" height="22"/>
+                                <state key="normal" image="btn_close"/>
+                                <connections>
+                                    <action selector="clickCloseBtn:" destination="qVz-Np-JnD" eventType="touchUpInside" id="WnG-pA-Dea"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="BM9-8w-Puh" secondAttribute="leading" id="BlZ-5u-kIy"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BM9-8w-Puh" secondAttribute="trailing" id="gtC-H2-fRb"/>
+                            <constraint firstItem="AbN-8c-Nl1" firstAttribute="top" secondItem="BM9-8w-Puh" secondAttribute="bottom" constant="38" id="nA6-n9-Soz"/>
+                            <constraint firstItem="cNh-UZ-VGR" firstAttribute="top" secondItem="ot6-B6-DQ7" secondAttribute="bottom" constant="8" id="rTp-cP-euZ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="cNh-UZ-VGR" secondAttribute="leading" id="taF-y9-aYR"/>
+                            <constraint firstItem="BM9-8w-Puh" firstAttribute="top" secondItem="ot6-B6-DQ7" secondAttribute="bottom" constant="266" id="vnu-fw-2Si"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cJK-eW-uXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-666.39999999999998" y="122.78860569715144"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HopeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS1-a0-U6u">
+                                <rect key="frame" x="16" y="28" width="20" height="22"/>
+                                <state key="normal" image="btn_list"/>
+                                <connections>
+                                    <action selector="clickSetting:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HWS-w0-coX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJE-Sc-uEN">
+                                <rect key="frame" x="336" y="23" width="20" height="22"/>
+                                <state key="normal" image="btn_share"/>
+                                <connections>
+                                    <action selector="clickShare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Pf-2u-4gd"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hJE-Sc-uEN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="3" id="1vp-ni-ulJ"/>
+                            <constraint firstItem="cS1-a0-U6u" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="EBW-HT-gel"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hJE-Sc-uEN" secondAttribute="trailing" constant="3" id="JJY-E7-raH"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="cS1-a0-U6u" secondAttribute="leading" id="czW-ui-Ve7"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="g_settingBtn" destination="cS1-a0-U6u" id="QnR-uF-Iri"/>
+                        <outlet property="g_shareBtn" destination="hJE-Sc-uEN" id="E06-eW-3Bi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+        <!--Share View Controller-->
+        <scene sceneID="VvP-c6-3ZT">
+            <objects>
+                <viewController storyboardIdentifier="ShareViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5s4-lg-ldJ" customClass="ShareViewController" customModule="HopeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dT7-P7-6ex"/>
+                        <viewControllerLayoutGuide type="bottom" id="9ws-2F-cQR"/>
+                    </layoutGuides>
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="cg9-jq-Jw8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KoO-bC-hzh">
+                                <rect key="frame" x="16" y="28" width="20" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="btn_close"/>
+                                <connections>
+                                    <action selector="clickCloseBtn:" destination="5s4-lg-ldJ" eventType="touchUpInside" id="ZOn-8z-oWg"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sUx-Sy-94I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="781.60000000000002" y="122.78860569715144"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="btn_close" width="20" height="20"/>
+        <image name="btn_list" width="20" height="20"/>
+        <image name="btn_share" width="20" height="20"/>
+    </resources>
+</document>

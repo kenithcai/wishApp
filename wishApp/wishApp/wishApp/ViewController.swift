@@ -51,18 +51,15 @@ class ViewController: UIViewController {
         }
     }
     
-    func showImg(url:String)
+    func showImg(imgUrl:String)
     {
-        print("size = \(g_screenSize)")
-        let imgUrl = "http://blog.fathoo.xyz/png/ppp.jpeg"
         let imageView = UIImageView()
-        imageView.kf_setImageWithURL(NSURL(string: imgUrl)!)
-        
         imageView.frame = CGRectMake(0,0,g_screenSize.width,g_screenSize.height)
         imageView.contentMode = .ScaleAspectFit
+        self.view.insertSubview(imageView, atIndex: 0)
         
-        self.view.addSubview(imageView)
-
+        imageView.kf_setImageWithURL(NSURL(string: imgUrl)!)
+        
     }
     
     func showLab(content:String)
@@ -70,8 +67,31 @@ class ViewController: UIViewController {
         let label=UILabel(frame:CGRectMake(0, 448, g_screenSize.width, 120))
         label.lineBreakMode = .ByWordWrapping
         label.numberOfLines = 0
-        label.text = content
         self.view.addSubview(label)
+        
+        
+        label.text = content
+    }
+    @IBAction func clickBtn(sender: UIButton) {
+        print("aaaaa btn")
+    }
+    @IBOutlet weak var aaaa: UIButton!
+
+    @IBAction func clickSetOut(sender: AnyObject) {
+        
+        name {$0 * $1}
+    }
+    
+    func name(operation:(Double,Double) -> Double) {
+        let b = operation(1.0,2.0)
+        print("aaaa = : \(b)")
+    }
+    @IBAction func clickList(sender: UIButton) {
+        print("clickList")
+    }
+    @IBAction func clickShare(sender: UIButton) {
+        print("clickShare")
+        //self.performSegueWithIdentifier("EasyCode", sender: self)
     }
 }
 

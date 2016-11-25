@@ -16,6 +16,8 @@
 		D4AB29171D9B612E0052B548 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4AB29151D9B612E0052B548 /* LaunchScreen.storyboard */; };
 		D4AB29221D9B612F0052B548 /* wishAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AB29211D9B612F0052B548 /* wishAppTests.swift */; };
 		D4AB292D1D9B612F0052B548 /* wishAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AB292C1D9B612F0052B548 /* wishAppUITests.swift */; };
+		D4CCF9B61DCB7343000FF778 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCF9B51DCB7343000FF778 /* ShareViewController.swift */; };
+		D4CCF9B81DCB7563000FF778 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCF9B71DCB7563000FF778 /* SettingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,8 @@
 		D4AB29281D9B612F0052B548 /* wishAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = wishAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AB292C1D9B612F0052B548 /* wishAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = wishAppUITests.swift; sourceTree = "<group>"; };
 		D4AB292E1D9B612F0052B548 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D4CCF9B51DCB7343000FF778 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		D4CCF9B71DCB7563000FF778 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		DA63C01A30C74E34B55A7D61 /* Pods_wishApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_wishApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -126,10 +130,12 @@
 				D4AB29091D9B612E0052B548 /* AppDelegate.swift */,
 				D4AB290B1D9B612E0052B548 /* ViewController.swift */,
 				D4AB290D1D9B612E0052B548 /* Main.storyboard */,
+				D4CCF9B51DCB7343000FF778 /* ShareViewController.swift */,
 				D4AB29131D9B612E0052B548 /* Assets.xcassets */,
 				D4AB29151D9B612E0052B548 /* LaunchScreen.storyboard */,
 				D4AB29181D9B612E0052B548 /* Info.plist */,
 				D4AB29101D9B612E0052B548 /* wishApp.xcdatamodeld */,
+				D4CCF9B71DCB7563000FF778 /* SettingViewController.swift */,
 			);
 			path = wishApp;
 			sourceTree = "<group>";
@@ -223,13 +229,16 @@
 				TargetAttributes = {
 					D4AB29051D9B612E0052B548 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 					};
 					D4AB291C1D9B612F0052B548 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = D4AB29051D9B612E0052B548;
 					};
 					D4AB29271D9B612F0052B548 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = D4AB29051D9B612E0052B548;
 					};
 				};
@@ -334,8 +343,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4CCF9B81DCB7563000FF778 /* SettingViewController.swift in Sources */,
 				D4AB290C1D9B612E0052B548 /* ViewController.swift in Sources */,
 				D4AB290A1D9B612E0052B548 /* AppDelegate.swift in Sources */,
+				D4CCF9B61DCB7343000FF778 /* ShareViewController.swift in Sources */,
 				D4AB29121D9B612E0052B548 /* wishApp.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -485,6 +496,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fingertip.wishApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -497,6 +509,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fingertip.wishApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -508,6 +521,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fingertip.wishAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wishApp.app/wishApp";
 			};
 			name = Debug;
@@ -520,6 +534,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fingertip.wishAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/wishApp.app/wishApp";
 			};
 			name = Release;
@@ -531,6 +546,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fingertip.wishAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = wishApp;
 			};
 			name = Debug;
@@ -542,6 +558,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fingertip.wishAppUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
 				TEST_TARGET_NAME = wishApp;
 			};
 			name = Release;
