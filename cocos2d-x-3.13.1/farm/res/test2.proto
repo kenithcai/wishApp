@@ -1,0 +1,10 @@
+message child{
+	required bytes name = 1;
+	required int32 age = 2;
+}
+
+message people{
+	required bytes name = 1;
+	required child c = 2;
+}
+
