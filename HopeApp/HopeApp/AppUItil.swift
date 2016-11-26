@@ -1,5 +1,6 @@
 //
 //  AppUItil.swift
+//  工具类
 //  HopeApp
 //
 //  Created by KenithCai on 16/11/17.
