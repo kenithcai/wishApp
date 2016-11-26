@@ -108,6 +108,8 @@ class ViewController: UIViewController {
         
 //        WeixinSdk.instance().sendText("哈哈test", in: WXSceneSession)
 //        let path = Bundle.main.path(forResource: "preset_bg_7", ofType: "jpg")
+//        let img = AppUtil.screenShots()
+        
         let img = AppUtil.screenShots()
         WeixinSdk.instance().sendImg(UIImagePNGRepresentation(img), in: WXSceneTimeline)
     }
