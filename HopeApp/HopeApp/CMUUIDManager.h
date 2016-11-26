@@ -10,7 +10,7 @@
 #define CMUUIDManager_h
 
 @interface CMUUIDManager : NSObject
-
+//test
 +(void)saveUUID:(NSString *)uuid;
 
 +(id)readUUID;
