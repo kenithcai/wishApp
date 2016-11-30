@@ -4,7 +4,7 @@
 #include "cocos2d.h"
 #include "scripting/lua-bindings/manual/lua_module_register.h"
 #include "pbc/pbc-lua.h"
-//#include "HelloWorldScene.h"
+#include "HelloWorldScene.h"
 #include "lua_myclass_auto.hpp"
 
 using namespace CocosDenshion;
@@ -49,30 +49,32 @@ bool AppDelegate::applicationDidFinishLaunching()
     // set default FPS
     Director::getInstance()->setAnimationInterval(1.0 / 60.0f);
 
-//    auto scene = HelloWorld::createScene();
-//    Director::getInstance()->runWithScene(scene);
+    auto scene = HelloWorld::createScene();
+    Director::getInstance()->runWithScene(scene);
     // register lua module
-    auto engine = LuaEngine::getInstance();
-    ScriptEngineManager::getInstance()->setScriptEngine(engine);
-    lua_State* L = engine->getLuaStack()->getLuaState();
-    lua_module_register(L);
-
-//    register_all_player(L);
-    register_all_myclass(L);
-    luaopen_protobuf_c(L);
-    register_all_packages();
-
-    LuaStack* stack = engine->getLuaStack();
-    stack->setXXTEAKeyAndSign("2dxLua", strlen("2dxLua"), "XXTEA", strlen("XXTEA"));
-
-    //register custom function
-    //LuaStack* stack = engine->getLuaStack();
-    //register_custom_function(stack->getLuaState());
-
-    if (engine->executeScriptFile("src/main.lua"))
-    {
-        return false;
-    }
+//    auto engine = LuaEngine::getInstance();
+//    ScriptEngineManager::getInstance()->setScriptEngine(engine);
+//    lua_State* L = engine->getLuaStack()->getLuaState();
+//    lua_module_register(L);
+//
+////    register_all_player(L);
+//    register_all_myclass(L);
+//    luaopen_protobuf_c(L);
+//    register_all_packages();
+//
+//    LuaStack* stack = engine->getLuaStack();
+//    stack->setXXTEAKeyAndSign("2dxLua", strlen("2dxLua"), "XXTEA", strlen("XXTEA"));
+//
+//    
+////    sSocketManager->connect("192.169.0.143",7001);
+//    //register custom function
+//    //LuaStack* stack = engine->getLuaStack();
+//    //register_custom_function(stack->getLuaState());
+//
+//    if (engine->executeScriptFile("src/main.lua"))
+//    {
+//        return false;
+//    }
 
     return true;
 }

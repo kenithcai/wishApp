@@ -34,6 +34,10 @@
 		D4CC592B1DD062D00055C317 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CC592A1DD062D00055C317 /* SettingViewController.swift */; };
 		D4CC592D1DD062DE0055C317 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CC592C1DD062DE0055C317 /* ShareViewController.swift */; };
 		D4CCAD951DDDC90C004CDED0 /* AppUItil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */; };
+		D4FC19721DEE6A3A0064CFE0 /* WeatherMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC19711DEE6A3A0064CFE0 /* WeatherMgr.swift */; };
+		D4FC19741DEE6A820064CFE0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FC19731DEE6A820064CFE0 /* MapKit.framework */; };
+		D4FC19761DEE7C6F0064CFE0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FC19751DEE7C6F0064CFE0 /* CoreLocation.framework */; };
+		D4FC19781DEE877C0064CFE0 /* LocationMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC19771DEE877C0064CFE0 /* LocationMgr.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +102,10 @@
 		D4CC592A1DD062D00055C317 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		D4CC592C1DD062DE0055C317 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUItil.swift; sourceTree = "<group>"; };
+		D4FC19711DEE6A3A0064CFE0 /* WeatherMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherMgr.swift; sourceTree = "<group>"; };
+		D4FC19731DEE6A820064CFE0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D4FC19751DEE7C6F0064CFE0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D4FC19771DEE877C0064CFE0 /* LocationMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMgr.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +113,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4FC19761DEE7C6F0064CFE0 /* CoreLocation.framework in Frameworks */,
+				D4FC19741DEE6A820064CFE0 /* MapKit.framework in Frameworks */,
 				D483E6911DE0315700093C09 /* CFNetwork.framework in Frameworks */,
 				D483E68F1DE0314E00093C09 /* CoreTelephony.framework in Frameworks */,
 				D483E68D1DE0314200093C09 /* Security.framework in Frameworks */,
@@ -152,6 +162,8 @@
 		A7040A7A28DC46C815BD1CE9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D4FC19751DEE7C6F0064CFE0 /* CoreLocation.framework */,
+				D4FC19731DEE6A820064CFE0 /* MapKit.framework */,
 				D483E6901DE0315700093C09 /* CFNetwork.framework */,
 				D483E68E1DE0314E00093C09 /* CoreTelephony.framework */,
 				D483E68C1DE0314200093C09 /* Security.framework */,
@@ -201,7 +213,6 @@
 				D41FCC251DCDB993001F6C94 /* HopeApp.xcdatamodeld */,
 				D4CC592A1DD062D00055C317 /* SettingViewController.swift */,
 				D4CC592C1DD062DE0055C317 /* ShareViewController.swift */,
-				D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */,
 				D483E6231DDEA76100093C09 /* BaseViewController.swift */,
 				D483E6921DE032FA00093C09 /* WeixinSdk.h */,
 				D483E67A1DE00A6400093C09 /* WeixinSdk.m */,
@@ -210,6 +221,9 @@
 				D41D81BC1DE43BA400D9323B /* CMKeyChain.h */,
 				D41D81BD1DE43BAF00D9323B /* CMKeyChain.m */,
 				D483E6791DE00A6300093C09 /* HopeApp-Bridging-Header.h */,
+				D4FC19711DEE6A3A0064CFE0 /* WeatherMgr.swift */,
+				D4FC19771DEE877C0064CFE0 /* LocationMgr.swift */,
+				D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */,
 			);
 			path = HopeApp;
 			sourceTree = "<group>";
@@ -500,9 +514,11 @@
 			files = (
 				D41D81BA1DE43B5000D9323B /* CMUUIDManager.m in Sources */,
 				D41FCC211DCDB993001F6C94 /* ViewController.swift in Sources */,
+				D4FC19781DEE877C0064CFE0 /* LocationMgr.swift in Sources */,
 				D41FCC271DCDB993001F6C94 /* HopeApp.xcdatamodeld in Sources */,
 				D41D81BE1DE43BAF00D9323B /* CMKeyChain.m in Sources */,
 				D4CC592D1DD062DE0055C317 /* ShareViewController.swift in Sources */,
+				D4FC19721DEE6A3A0064CFE0 /* WeatherMgr.swift in Sources */,
 				D41FCC1F1DCDB993001F6C94 /* AppDelegate.swift in Sources */,
 				D483E67B1DE00A6400093C09 /* WeixinSdk.m in Sources */,
 				D4CC592B1DD062D00055C317 /* SettingViewController.swift in Sources */,

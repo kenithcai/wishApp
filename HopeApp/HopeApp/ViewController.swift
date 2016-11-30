@@ -9,6 +9,7 @@
 import UIKit
 import Kingfisher
 import Alamofire
+import CoreFoundation
 
 class ViewController: UIViewController {
 
@@ -85,11 +86,11 @@ class ViewController: UIViewController {
     }
     
     // 显示隐藏界面上的东西
-    func showInfo(show: Bool)
+    func hiddenInfo(hidden: Bool)
     {
-        g_settingBtn.isHidden = show
-        g_shareBtn.isHidden = show
-        g_labView?.isHidden = show
+        g_settingBtn.isHidden = hidden
+        g_shareBtn.isHidden = hidden
+        g_labView?.isHidden = hidden
         
         if (g_imageView == nil) {
             return
@@ -101,10 +102,10 @@ class ViewController: UIViewController {
     }
     // 分享
     @IBAction func clickShare(_ sender: UIButton) {
-        self.showInfo(show: true)
+        self.hiddenInfo(hidden: true)
         
         AppUtil.gaussianBlur(view: g_imageView!)
-        AppUtil.addView(vc: self, name: "ShareViewController",closure: {self.showInfo(show: false)})
+        AppUtil.addView(vc: self, name: "ShareViewController",closure: {self.hiddenInfo(hidden: false)})
         
 //        WeixinSdk.instance().sendText("哈哈test", in: WXSceneSession)
 //        let path = Bundle.main.path(forResource: "preset_bg_7", ofType: "jpg")
@@ -115,10 +116,22 @@ class ViewController: UIViewController {
     }
     // 设置页面
     @IBAction func clickSetting(_ sender: UIButton) {
-        self.showInfo(show: true)
         
-        AppUtil.gaussianBlur(view: g_imageView!)
-        AppUtil.addView(vc: self, name: "SettingViewController",closure: {self.showInfo(show: false)})
+//        AppUtil.getWeather()
+        
+        
+        LocationMgr.instance.city() { (city) in
+            print(city)
+            print(city?.transformToPinYin())
+            AppUtil.weatherData(city:(city?.transformToPinYin())!)
+        }
+        
+        
+        
+//        self.hiddenInfo(show: true)
+
+//        AppUtil.gaussianBlur(view: g_imageView!)
+//        AppUtil.addView(vc: self, name: "SettingViewController",closure: {self.hiddenInfo(hidden: false)})
 
     }
 }

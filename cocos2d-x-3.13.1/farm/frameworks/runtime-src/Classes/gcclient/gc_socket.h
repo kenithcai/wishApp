@@ -35,7 +35,11 @@ public:
     /** 主动断开连接. */
 	void disconnect();
     /** 通过TCP,连接指定服务器. */
-	bool connect(const char* host, int port);
+    bool connect(const char* host, int port);
+	bool connectIpv4(const char* host, int port);
+    bool connectIpv6(const char* host, int port);
+    /** 创建线程 */
+    bool createPthread();
     /**同步写消息函数，消息写完才返回, 成功返回实际写入数据长度,失败返回0, */
 	int write(gc_msg* msg);
     int getSocket(){return socket_;}

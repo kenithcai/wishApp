@@ -12,6 +12,7 @@
 #include "gc_locker.h"
 #include "gc_msgqueue.h"
 #include "gc_socket.h"
+#include "gc_NetIPv.h"
 
 
 #endif /* GCCOM_H_ */

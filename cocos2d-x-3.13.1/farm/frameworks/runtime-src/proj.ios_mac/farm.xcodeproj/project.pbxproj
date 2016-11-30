@@ -70,6 +70,8 @@
 		D4FC190F1DE846DD0064CFE0 /* gc_socket.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4FC190B1DE846DD0064CFE0 /* gc_socket.cpp */; };
 		D4FC19161DE929690064CFE0 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4FC19141DE929680064CFE0 /* HelloWorldScene.cpp */; };
 		D4FC191C1DE935200064CFE0 /* lua_myclass_auto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4FC191A1DE935200064CFE0 /* lua_myclass_auto.cpp */; };
+		D4FC19261DE95DD30064CFE0 /* SocketManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4FC19241DE95DD30064CFE0 /* SocketManager.cpp */; };
+		D4FC192D1DE9669D0064CFE0 /* gc_NetIPv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D4FC192B1DE9669D0064CFE0 /* gc_NetIPv.cpp */; };
 		D6B061351803AC000077942B /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6B061341803AC000077942B /* CoreMotion.framework */; };
 		DA9E7D881AB1ABCC004B27C8 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA9E7D871AB1ABCC004B27C8 /* Security.framework */; };
 		ED545A891B68A23E00C3958E /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = ED545A881B68A23E00C3958E /* libiconv.dylib */; };
@@ -269,6 +271,11 @@
 		D4FC19151DE929680064CFE0 /* HelloWorldScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = ../Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		D4FC191A1DE935200064CFE0 /* lua_myclass_auto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lua_myclass_auto.cpp; sourceTree = "<group>"; };
 		D4FC191B1DE935200064CFE0 /* lua_myclass_auto.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lua_myclass_auto.hpp; sourceTree = "<group>"; };
+		D4FC19241DE95DD30064CFE0 /* SocketManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SocketManager.cpp; sourceTree = "<group>"; };
+		D4FC19251DE95DD30064CFE0 /* SocketManager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SocketManager.hpp; sourceTree = "<group>"; };
+		D4FC19291DE95E070064CFE0 /* Singleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleton.h; sourceTree = "<group>"; };
+		D4FC192B1DE9669D0064CFE0 /* gc_NetIPv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gc_NetIPv.cpp; sourceTree = "<group>"; };
+		D4FC192C1DE9669D0064CFE0 /* gc_NetIPv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gc_NetIPv.h; sourceTree = "<group>"; };
 		D6B061341803AC000077942B /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.0.sdk/System/Library/Frameworks/CoreMotion.framework; sourceTree = DEVELOPER_DIR; };
 		DA9E7D871AB1ABCC004B27C8 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		ED545A881B68A23E00C3958E /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.4.sdk/usr/lib/libiconv.dylib; sourceTree = DEVELOPER_DIR; };
@@ -445,6 +452,9 @@
 		D4FC19051DE846DD0064CFE0 /* gcclient */ = {
 			isa = PBXGroup;
 			children = (
+				D4FC192B1DE9669D0064CFE0 /* gc_NetIPv.cpp */,
+				D4FC192C1DE9669D0064CFE0 /* gc_NetIPv.h */,
+				D4FC19291DE95E070064CFE0 /* Singleton.h */,
 				D4FC19061DE846DD0064CFE0 /* gc_comm.h */,
 				D4FC19071DE846DD0064CFE0 /* gc_def.h */,
 				D4FC19081DE846DD0064CFE0 /* gc_locker.h */,
@@ -452,6 +462,8 @@
 				D4FC190A1DE846DD0064CFE0 /* gc_msgqueue.h */,
 				D4FC190B1DE846DD0064CFE0 /* gc_socket.cpp */,
 				D4FC190C1DE846DD0064CFE0 /* gc_socket.h */,
+				D4FC19241DE95DD30064CFE0 /* SocketManager.cpp */,
+				D4FC19251DE95DD30064CFE0 /* SocketManager.hpp */,
 			);
 			name = gcclient;
 			path = ../Classes/gcclient;
@@ -775,11 +787,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4FC190F1DE846DD0064CFE0 /* gc_socket.cpp in Sources */,
+				D4FC192D1DE9669D0064CFE0 /* gc_NetIPv.cpp in Sources */,
 				D4FC190E1DE846DD0064CFE0 /* gc_msgqueue.cpp in Sources */,
 				D4FC19161DE929690064CFE0 /* HelloWorldScene.cpp in Sources */,
 				5023812517EBBCAC00990C9B /* RootViewController.mm in Sources */,
 				D4FC18F51DE81C6E0064CFE0 /* player.cpp in Sources */,
 				F293BB9C15EB831F00256477 /* AppDelegate.cpp in Sources */,
+				D4FC19261DE95DD30064CFE0 /* SocketManager.cpp in Sources */,
 				D4FC191C1DE935200064CFE0 /* lua_myclass_auto.cpp in Sources */,
 				5023812417EBBCAC00990C9B /* main.m in Sources */,
 				5023811817EBBCAC00990C9B /* AppController.mm in Sources */,

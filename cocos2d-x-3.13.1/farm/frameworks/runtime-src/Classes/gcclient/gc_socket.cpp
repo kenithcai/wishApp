@@ -6,6 +6,7 @@
  */
 
 #include "gc_socket.h"
+#include "gc_NetIPv.h"
 
 gc_socket::gc_socket(gc_msgqueue* queue) :
 		queue_(queue)
@@ -152,7 +153,15 @@ void gc_socket::disconnect()
 	::close(socket_);
 }
 
-bool gc_socket::connect(const char* host, int port)
+bool gc_socket::connect(const char *host, int port)
+{
+    TLocalIPStack tyle = gc_NetIPv::getIpv();
+    if (tyle == ELocalIPStack_IPv6)
+        return this->connectIpv6(host, port);
+    return this->connectIpv4(host, port);
+}
+
+bool gc_socket::connectIpv4(const char* host, int port)
 {
 	struct sockaddr_in server_add;
 	int fd = ::socket(AF_INET, SOCK_STREAM, 0);
@@ -171,20 +180,57 @@ bool gc_socket::connect(const char* host, int port)
 	}
 	socket_ = fd;
 	disconnected_ = false;
+    
+    return this->createPthread();
+}
+
+bool gc_socket::connectIpv6(const char *host, int port)
+{
+    int fd = ::socket(AF_INET6, SOCK_STREAM, IPPROTO_TCP);
+    if ( fd == -1 )
+    {
+        printf("create socket error...%s\n", strerror(errno));
+        return false;
+    }
+    
+    std::string nip = gc_NetIPv::getIPv6Addr(host);
+    
+    struct in6_addr ipv6_addr = {0};
+    inet_pton(AF_INET6, nip.c_str(), &ipv6_addr);
+    
+    struct sockaddr_in6 v6_addr = {0};
+    v6_addr.sin6_family = AF_INET6;
+    v6_addr.sin6_port = htons(port);
+    v6_addr.sin6_addr = ipv6_addr;
+    
+    int nRet = ::connect(fd, (sockaddr*)&v6_addr, sizeof(v6_addr));
+    if( nRet != 0 )
+    {
+        return false;
+    }
+    
+    socket_ = fd;
+    disconnected_ = false;
+    
+    return this->createPthread();
+}
+
+bool gc_socket::createPthread()
+{
     //创建发送消息工作线程.
-	pthread_t st;
-	if (pthread_create(&st, NULL, gc_socket::sendSvc, this) != 0)
-	{
-		return false;
-	}
-	//创建读取消息工作线程.
-	pthread_t t;
-	if (pthread_create(&t, NULL, gc_socket::readSvc, this) != 0)
-	{
-		return false;
-	}
-	pthread_detach(t);
-	return true;
+    pthread_t st;
+    if (pthread_create(&st, NULL, gc_socket::sendSvc, this) != 0)
+    {
+        return false;
+    }
+    //创建读取消息工作线程.
+    pthread_t t;
+    if (pthread_create(&t, NULL, gc_socket::readSvc, this) != 0)
+    {
+        return false;
+    }
+    pthread_detach(t);
+    return true;
 }
 
 void gc_socket::aync_write(gc_msg *msg)
