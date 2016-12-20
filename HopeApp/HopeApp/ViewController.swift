@@ -41,7 +41,9 @@ class ViewController: UIViewController {
     let formatUrl = "http://blog.fathoo.xyz/index.php?a=hope&m=getSencence&device_id=%@"
     func reloadData()
     {
-        let url = String.init(format: formatUrl, AppUtil.uid())
+        // TODO:test
+        let url = String.init(format: formatUrl, "1111111111111")
+//        let url = String.init(format: formatUrl, AppUtil.uid())
         Alamofire.request(url, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
@@ -62,7 +64,7 @@ class ViewController: UIViewController {
                     // 显示天气
                     self.showWeather()
                     // 是否可点赞
-//                    self.showCanLike(canLike!)
+                    self.showCanLike(canLike!)
                 }
                 break
                 
@@ -123,7 +125,21 @@ class ViewController: UIViewController {
     
     func showWeather()
     {
+        // TODO:test1
         AppUtil.snowAct(view: g_imageView!)
+        
+        let city = "guangzhou"
+        self.g_weatherInfo.city = city
+        AppUtil.weatherData(city:(city.transformToPinYin()),info: &self.g_weatherInfo)
+        print("aaaaaaaaaaaaaaaaaa",self.g_weatherInfo.city,self.g_weatherInfo.temp,self.g_weatherInfo.weather,self.g_weatherInfo.time)
+        let str = String.init(format: "%@    %@    %@   %@",
+                              self.g_weatherInfo.city,
+                              AppUtil.weatherToCN(self.g_weatherInfo.weather),
+                              self.g_weatherInfo.temp,
+                              self.g_weatherInfo.time)
+        self.g_weatherLab.isHidden = false
+        self.g_weatherLab.textAlignment = NSTextAlignment.right
+        self.g_weatherLab.text = str
         
         LocationMgr.instance.city() { (city) in
             print(city)
@@ -131,17 +147,16 @@ class ViewController: UIViewController {
             self.g_weatherInfo.city = city!
             AppUtil.weatherData(city:(city?.transformToPinYin())!,info: &self.g_weatherInfo)
             print("aaaaaaaaaaaaaaaaaa",self.g_weatherInfo.city,self.g_weatherInfo.temp,self.g_weatherInfo.weather,self.g_weatherInfo.time)
-            let str = String.init(format: "%@       %@      %@      %@", self.g_weatherInfo.city,self.g_weatherInfo.weather,self.g_weatherInfo.temp,self.g_weatherInfo.time)
-//            let lab=UILabel(frame:CGRect(x: 0, y:460, width: self.g_screenSize.width, height: 16))
+            let str = String.init(format: "%@    %@    %@    %@",
+                                  self.g_weatherInfo.city,
+                                  AppUtil.weatherToCN(self.g_weatherInfo.weather),
+                                  self.g_weatherInfo.temp,
+                                  self.g_weatherInfo.time)
             self.g_weatherLab.isHidden = false
             self.g_weatherLab.textAlignment = NSTextAlignment.center
-            self.g_weatherLab.lineBreakMode = .byWordWrapping
-//            lab.textColor = UIColor.white
-//            lab.backgroundColor = UIColor.black
+//            self.g_weatherLab.lineBreakMode = .byWordWrapping
             self.g_weatherLab.numberOfLines = 0
             self.g_weatherLab.text = str
-//            self.view?.addSubview(lab)
-            
 //            print("aaaaaaaaaaaaaaaaaa",self.g_weatherInfo.city,self.g_weatherInfo.temp,self.g_weatherInfo.weather,self.g_weatherInfo.time)
             
         }

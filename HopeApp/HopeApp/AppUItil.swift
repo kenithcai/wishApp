@@ -138,6 +138,14 @@ class AppUtil
         
     }
     
+    // 天气情况
+    class func weatherToCN(_ weather:String)->String
+    {
+        var dic:Dictionary<String,String>=["wind":"阵风","clouds":"多云","rain":"有雨","snow":"下雪", "Haze":"阴霾"];
+        let info = dic[weather]
+        return (info != nil) ? info! : weather
+    }
+    
     class func weatherData(city:String, info:inout WeatherInfo)
     {
         let apiId = "12b2817fbec86915a6e9b4dbbd3d9036"
@@ -149,7 +157,7 @@ class AppUtil
         let jsonData : AnyObject! = try? JSONSerialization
         .jsonObject(with: data as Data, options:JSONSerialization.ReadingOptions.allowFragments) as AnyObject!
 
-//            print(jsonData)
+            print(jsonData)
         
         let weatherL = jsonData["weather"]as!NSArray
         let weather = (weatherL[0] as AnyObject)["main"]
@@ -159,7 +167,8 @@ class AppUtil
         
         //日期格式化输出
         let dformatter = DateFormatter()
-        dformatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
+//        dformatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
+        dformatter.dateFormat = "MMM d, yyyy"
         
         let timeInterval3 = TimeInterval(jsonData["dt"] as!Int)
         let date3 = NSDate(timeIntervalSince1970: timeInterval3)
@@ -263,6 +272,5 @@ class AppUtil
         //(3) 发送请求
         //NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue:OperationQueue(), completionHandler: handler)
     }
-    
 }
 
