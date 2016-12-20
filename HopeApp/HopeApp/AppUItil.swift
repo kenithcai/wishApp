@@ -11,6 +11,13 @@ import Foundation
 import UIKit
 
 let GaussianBlurTag = 1000
+struct WeatherInfo
+{
+    var city = ""
+    var weather = ""
+    var time = ""
+    var temp = ""
+}
 
 extension String {
     
@@ -27,6 +34,42 @@ extension String {
         //去掉空格
         return string.replacingOccurrences(of: " ", with: "")
 //        return string.stringByReplacingOccurrencesOfString(" ", withString: "")
+    }
+}
+
+extension UIImage {
+    
+    /// 将当前图片缩放到指定宽度
+    ///
+    /// - parameter width: 指定宽度
+    ///
+    /// - returns: UIImage，如果本身比指定的宽度小，直接返回
+    func scaleImageToWidth(_ width: CGFloat) -> UIImage {
+        
+        // 1. 判断宽度，如果小于指定宽度直接返回当前图像
+        if size.width < width {
+            return self
+        }
+        
+        // 2. 计算等比例缩放的高度
+        let height = width * size.height / size.width
+        
+        // 3. 图像的上下文
+        let s = CGSize(width: width, height: height)
+        // 提示：一旦开启上下文，所有的绘图都在当前上下文中
+        UIGraphicsBeginImageContext(s)
+        
+        // 在制定区域中缩放绘制完整图像
+        draw(in: CGRect(origin: CGPoint.zero, size: s))
+        
+        // 4. 获取绘制结果
+        let result = UIGraphicsGetImageFromCurrentImageContext()
+        
+        // 5. 关闭上下文
+        UIGraphicsEndImageContext()
+        
+        // 6. 返回结果
+        return result!
     }
 }
 
@@ -56,6 +99,11 @@ class AppUtil
         vc.present(rec!, animated: true)
     }
     
+    // 获取Uid
+    class func uid()->String
+    {
+        return CMUUIDManager.readUUID() as! String
+    }
     // 截全屏
     class func screenShots()->UIImage
     {
@@ -84,7 +132,13 @@ class AppUtil
         return image!
     }
     
-    class func weatherData(city:String)
+    // 天气数据
+    class func weatherData(city:String, handler: @escaping (WeatherInfo?)->Void)
+    {
+        
+    }
+    
+    class func weatherData(city:String, info:inout WeatherInfo)
     {
         let apiId = "12b2817fbec86915a6e9b4dbbd3d9036"
         let urlStr = "http://api.openweathermap.org/data/2.5/weather?q=\(city)&units=metric&appid=\(apiId)"
@@ -92,37 +146,41 @@ class AppUtil
         guard let data = NSData(contentsOf: url as URL) else { return }
         
         //将获取到的数据转为json对象
-//        let jsonData = JSON(data: weatherData)
         let jsonData : AnyObject! = try? JSONSerialization
         .jsonObject(with: data as Data, options:JSONSerialization.ReadingOptions.allowFragments) as AnyObject!
 
-            print(jsonData)
+//            print(jsonData)
+        
+        let weatherL = jsonData["weather"]as!NSArray
+        let weather = (weatherL[0] as AnyObject)["main"]
+        
+        let main = jsonData["main"]as AnyObject
+        let temp = main["temp"]as?Int
         
         //日期格式化输出
         let dformatter = DateFormatter()
         dformatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
         
-        print("城市：\(jsonData["name"] as? String)")
+        let timeInterval3 = TimeInterval(jsonData["dt"] as!Int)
+        let date3 = NSDate(timeIntervalSince1970: timeInterval3)
         
-        let weatherL = jsonData["weather"]as!NSArray
-        let weather = (weatherL[0] as AnyObject)["main"]
-        print("天气：\(weather)")
-        let weatherDes = (weatherL[0] as AnyObject)["description"]
-        print("详细天气：\(weatherDes)")
+        
+        info.weather = weather as! String
+        info.temp = String.init(format: "%d°C", temp!)
+        info.time = dformatter.string(from: date3 as Date)
+//        let weatherDes = (weatherL[0] as AnyObject)["description"]
+//        print("详细天气：\(weatherDes)")
+        
 //
-        let main = jsonData["main"]as AnyObject
-        let temp = main["temp"]as?Int
-        print("温度：\(temp)°C")
+//        let humidity = main["humidity"]as?Int
+//        print("湿度：\(humidity)%")
 //
-        let humidity = main["humidity"]as?Int
-        print("湿度：\(humidity)%")
-
-        let pressure = main["pressure"]as?Int
-        print("气压：\(pressure)hpa")
-
-        let wind = jsonData["wind"]as AnyObject
-        let windSpeed = wind["speed"]as AnyObject
-        print("风速：\(windSpeed)m/s")
+//        let pressure = main["pressure"]as?Int
+//        print("气压：\(pressure)hpa")
+//
+//        let wind = jsonData["wind"]as AnyObject
+//        let windSpeed = wind["speed"]as AnyObject
+//        print("风速：\(windSpeed)m/s")
 //
 //        let lon = jsonData["coord"]["lon"].number!
 //        let lat = jsonData["coord"]["lat"].number!
@@ -136,9 +194,75 @@ class AppUtil
 //        let date2 = NSDate(timeIntervalSince1970: timeInterval2)
 //        print("日落时间：\(dformatter.stringFromDate(date2))")
 //        
-//        let timeInterval3 = NSTimeInterval(jsonData["dt"].number!)
-//        let date3 = NSDate(timeIntervalSince1970: timeInterval3)
-//        print("数据时间：\(dformatter.stringFromDate(date3))")
+        
     }
+    
+    // 下雪特效
+    class func snowAct(view:UIImageView)
+    {
+        let rect = CGRect(x: 0.0, y: -70.0, width: view.bounds.width,
+                          height: 50.0)
+        let emitter = CAEmitterLayer()
+        emitter.frame = rect
+        view.layer.addSublayer(emitter)
+        emitter.emitterShape = kCAEmitterLayerRectangle
+        
+        //kCAEmitterLayerPoint
+        //kCAEmitterLayerLine
+        //kCAEmitterLayerRectangle
+        
+        emitter.emitterPosition = CGPoint(x:rect.width/2, y:rect.height/2)
+        emitter.emitterSize = rect.size
+        
+        let emitterCell = CAEmitterCell()
+        emitterCell.contents = UIImage(named: "xh")?.scaleImageToWidth(30).cgImage
+        
+        emitterCell.birthRate = 5  //每秒产生120个粒子
+//        emitterCell.speed           = 10
+        emitterCell.velocity = 2.0 //初始速度
+        emitterCell.velocityRange = 10.0   //随机速度 -200+20 --- 200+20
+//        emitterCell.xAcceleration = 0.0 //x方向一个加速度
+        emitterCell.yAcceleration = 10.0  //给Y方向一个加速度
+        emitterCell.emissionRange = CGFloat(M_PI_2) //随机方向 -pi/2 --- pi/2
+        emitterCell.spin = 2 //旋转速度
+        emitterCell.spinRange = 0.25 * CGFloat(M_PI);
+        
+        emitterCell.lifetime = 10    //存活1秒
+        emitterCell.lifetimeRange = 3.0
+        
+        emitterCell.scale = 0.8
+        emitterCell.scaleRange = 0.8  //0 - 1.6
+        emitterCell.scaleSpeed = -0.1  //逐渐变小
+
+        emitterCell.alphaRange = 0.75   //随机透明度
+        emitterCell.alphaSpeed = -0.1  //逐渐消失
+//        emitterCell.emissionLongitude = CGFloat(-M_PI) //向左
+        
+        
+        
+//        emitterCell.color = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0).cgColor //指定颜色
+//        emitterCell.redRange = 1.0
+//        emitterCell.greenRange = 0.3
+//        emitterCell.blueRange = 0.3  //三个随机颜色
+        
+        emitter.emitterCells = [emitterCell]  //这里可以设置多种粒子 我们以一种为粒子
+    }
+    
+    // http get请求
+    class func likeApp(uid:String, handler: @escaping (URL?,Data?)->Void)
+    {
+        let urlStr:NSString = String(format:"http://blog.fathoo.xyz/index.php?a=hope&m=giveLike&id=1&device_id=%@",uid) as NSString
+        let url:NSURL = NSURL(string: urlStr as String)!
+        if let jsonData = NSData(contentsOf: url as URL)
+        {
+            handler(url as URL,jsonData as Data)
+        }
+        
+        //(2) 创建请求对象
+        //        let request:NSURLRequest = NSURLRequest(url: url as URL)
+        //(3) 发送请求
+        //NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue:OperationQueue(), completionHandler: handler)
+    }
+    
 }
 

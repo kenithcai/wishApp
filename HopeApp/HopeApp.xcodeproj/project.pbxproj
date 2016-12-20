@@ -10,6 +10,7 @@
 		622C9B3EA5E8F190D20A28ED /* Pods_HopeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD0A91DF419D0A0542C3082 /* Pods_HopeAppTests.framework */; };
 		7742BAE29093FDD33B181EC2 /* Pods_HopeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838B5F4006166D4DCF3C1E44 /* Pods_HopeApp.framework */; };
 		8E34775ED7862048AF3A8FFE /* Pods_HopeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E9DD43E7EF11309F655368 /* Pods_HopeAppUITests.framework */; };
+		D40C72CC1DF95E1B00CA5E0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40C72CB1DF95E1B00CA5E0D /* Assets.xcassets */; };
 		D41D81BA1DE43B5000D9323B /* CMUUIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D81B91DE43B5000D9323B /* CMUUIDManager.m */; };
 		D41D81BE1DE43BAF00D9323B /* CMKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D81BD1DE43BAF00D9323B /* CMKeyChain.m */; };
 		D41D81C01DE4417800D9323B /* keyUid.plist in Resources */ = {isa = PBXBuildFile; fileRef = D41D81BF1DE4417800D9323B /* keyUid.plist */; };
@@ -18,7 +19,6 @@
 		D41FCC211DCDB993001F6C94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41FCC201DCDB993001F6C94 /* ViewController.swift */; };
 		D41FCC241DCDB993001F6C94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41FCC221DCDB993001F6C94 /* Main.storyboard */; };
 		D41FCC271DCDB993001F6C94 /* HopeApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D41FCC251DCDB993001F6C94 /* HopeApp.xcdatamodeld */; };
-		D41FCC291DCDB993001F6C94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D41FCC281DCDB993001F6C94 /* Assets.xcassets */; };
 		D41FCC2C1DCDB993001F6C94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41FCC2A1DCDB993001F6C94 /* LaunchScreen.storyboard */; };
 		D483E6241DDEA76100093C09 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D483E6231DDEA76100093C09 /* BaseViewController.swift */; };
 		D483E67B1DE00A6400093C09 /* WeixinSdk.m in Sources */ = {isa = PBXBuildFile; fileRef = D483E67A1DE00A6400093C09 /* WeixinSdk.m */; };
@@ -34,6 +34,7 @@
 		D4CC592B1DD062D00055C317 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CC592A1DD062D00055C317 /* SettingViewController.swift */; };
 		D4CC592D1DD062DE0055C317 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CC592C1DD062DE0055C317 /* ShareViewController.swift */; };
 		D4CCAD951DDDC90C004CDED0 /* AppUItil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */; };
+		D4FA976E1E09545D00FB8F0A /* MyLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = D4FA976D1E09545D00FB8F0A /* MyLabel.m */; };
 		D4FC19721DEE6A3A0064CFE0 /* WeatherMgr.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FC19711DEE6A3A0064CFE0 /* WeatherMgr.swift */; };
 		D4FC19741DEE6A820064CFE0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FC19731DEE6A820064CFE0 /* MapKit.framework */; };
 		D4FC19761DEE7C6F0064CFE0 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D4FC19751DEE7C6F0064CFE0 /* CoreLocation.framework */; };
@@ -67,6 +68,7 @@
 		838B5F4006166D4DCF3C1E44 /* Pods_HopeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HopeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96C95A4B6BC2F4B4DDFD9300 /* Pods-HopeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopeAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HopeAppUITests/Pods-HopeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AAD0A91DF419D0A0542C3082 /* Pods_HopeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HopeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D40C72CB1DF95E1B00CA5E0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D41D81B91DE43B5000D9323B /* CMUUIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMUUIDManager.m; sourceTree = "<group>"; };
 		D41D81BB1DE43B5A00D9323B /* CMUUIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMUUIDManager.h; sourceTree = "<group>"; };
 		D41D81BC1DE43BA400D9323B /* CMKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMKeyChain.h; sourceTree = "<group>"; };
@@ -78,7 +80,6 @@
 		D41FCC201DCDB993001F6C94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D41FCC231DCDB993001F6C94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D41FCC261DCDB993001F6C94 /* HopeApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HopeApp.xcdatamodel; sourceTree = "<group>"; };
-		D41FCC281DCDB993001F6C94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D41FCC2B1DCDB993001F6C94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D41FCC2D1DCDB993001F6C94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D41FCC321DCDB993001F6C94 /* HopeAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HopeAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +103,8 @@
 		D4CC592A1DD062D00055C317 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		D4CC592C1DD062DE0055C317 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUItil.swift; sourceTree = "<group>"; };
+		D4FA976C1E09545C00FB8F0A /* MyLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyLabel.h; sourceTree = "<group>"; };
+		D4FA976D1E09545D00FB8F0A /* MyLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyLabel.m; sourceTree = "<group>"; };
 		D4FC19711DEE6A3A0064CFE0 /* WeatherMgr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherMgr.swift; sourceTree = "<group>"; };
 		D4FC19731DEE6A820064CFE0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D4FC19751DEE7C6F0064CFE0 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -205,9 +208,9 @@
 				D41FCC1E1DCDB993001F6C94 /* AppDelegate.swift */,
 				D41FCC201DCDB993001F6C94 /* ViewController.swift */,
 				D41FCC221DCDB993001F6C94 /* Main.storyboard */,
-				D41FCC281DCDB993001F6C94 /* Assets.xcassets */,
 				D41FCC2A1DCDB993001F6C94 /* LaunchScreen.storyboard */,
 				D41D81C11DE446D000D9323B /* preset_bg_7.jpg */,
+				D40C72CB1DF95E1B00CA5E0D /* Assets.xcassets */,
 				D41FCC2D1DCDB993001F6C94 /* Info.plist */,
 				D41D81BF1DE4417800D9323B /* keyUid.plist */,
 				D41FCC251DCDB993001F6C94 /* HopeApp.xcdatamodeld */,
@@ -224,6 +227,8 @@
 				D4FC19711DEE6A3A0064CFE0 /* WeatherMgr.swift */,
 				D4FC19771DEE877C0064CFE0 /* LocationMgr.swift */,
 				D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */,
+				D4FA976C1E09545C00FB8F0A /* MyLabel.h */,
+				D4FA976D1E09545D00FB8F0A /* MyLabel.m */,
 			);
 			path = HopeApp;
 			sourceTree = "<group>";
@@ -361,9 +366,9 @@
 			files = (
 				D41D81C01DE4417800D9323B /* keyUid.plist in Resources */,
 				D41FCC2C1DCDB993001F6C94 /* LaunchScreen.storyboard in Resources */,
-				D41FCC291DCDB993001F6C94 /* Assets.xcassets in Resources */,
 				D41D81C21DE446D000D9323B /* preset_bg_7.jpg in Resources */,
 				D483E6831DE0306D00093C09 /* README.txt in Resources */,
+				D40C72CC1DF95E1B00CA5E0D /* Assets.xcassets in Resources */,
 				D41FCC241DCDB993001F6C94 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -523,6 +528,7 @@
 				D483E67B1DE00A6400093C09 /* WeixinSdk.m in Sources */,
 				D4CC592B1DD062D00055C317 /* SettingViewController.swift in Sources */,
 				D483E6241DDEA76100093C09 /* BaseViewController.swift in Sources */,
+				D4FA976E1E09545D00FB8F0A /* MyLabel.m in Sources */,
 				D4CCAD951DDDC90C004CDED0 /* AppUItil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -15,6 +15,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // Do any additional setup after loading the view, typically from a nib.
         
         //网络请求
@@ -25,7 +26,10 @@ class ViewController: UIViewController {
     var g_screenSize:CGRect = UIScreen.main.bounds
     var g_imageView:UIImageView? = nil
     var g_labView:UILabel? = nil
+    var g_weatherInfo:WeatherInfo = WeatherInfo()
     
+    @IBOutlet weak var g_weatherLab: UILabel!
+    @IBOutlet weak var g_contentLab: MyLabel!
     @IBOutlet weak var g_shareBtn: UIButton!
     @IBOutlet weak var g_settingBtn: UIButton!
 
@@ -34,9 +38,10 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    let url = "http://blog.fathoo.xyz/index.php?a=hope&m=getSencence"
+    let formatUrl = "http://blog.fathoo.xyz/index.php?a=hope&m=getSencence&device_id=%@"
     func reloadData()
     {
+        let url = String.init(format: formatUrl, AppUtil.uid())
         Alamofire.request(url, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
@@ -48,12 +53,16 @@ class ViewController: UIViewController {
                     let picUrl = json?["picture"] as? String
 //                    let time = json?["release_date"] as? String
 //                    print("content:\(content), pic:\(picUrl),time:\(time)")
-
+                    let author = json?["author"] as? String
+                    let canLike = json?["can_give_like"] as? Bool
                     // 显示图片
-                    self.showImg(picUrl!)
-                    
+                    self.showImg(picUrl)
                     // 显示文字
-                    self.showLab(content!)
+                    self.showLab(content, author: author)
+                    // 显示天气
+                    self.showWeather()
+                    // 是否可点赞
+//                    self.showCanLike(canLike!)
                 }
                 break
                 
@@ -65,24 +74,81 @@ class ViewController: UIViewController {
         }
     }
     
-    func showImg(_ imgUrl:String)
+    func showImg(_ imgUrl:String?)
     {
+        if nil == imgUrl
+        {
+            return
+        }
+        
         let imageView = UIImageView()
         imageView.frame = CGRect(x: 0,y: 0,width: g_screenSize.width,height: g_screenSize.height)
         imageView.contentMode = .scaleAspectFit
         self.view.insertSubview(imageView, at: 0)
-        imageView.kf.setImage(with: URL(string: imgUrl)!)
+        imageView.kf.setImage(with: URL(string: imgUrl!)!)
         g_imageView = imageView
     }
     
-    func showLab(_ content:String)
+    func showLab(_ content:String?, author:String?)
     {
-        let label=UILabel(frame:CGRect(x: 30, y: 448, width: g_screenSize.width-60, height: 120))
-        label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 0
-        self.view.addSubview(label)
-        label.text = content
-        g_labView = label
+        if nil == content {
+            return
+        }
+        g_contentLab.sizeToFit()
+        g_contentLab.verStyle = top
+        g_contentLab.text = content
+        g_contentLab.isHidden = false
+        
+        if nil == author {
+            return
+        }
+        
+//        「」『』
+        let rect = g_contentLab.bounds
+        var str = author
+
+        str?.insert("『", at: (str?.startIndex)!)
+        str?.insert("—", at: (str?.startIndex)!)
+        str?.insert("—", at: (str?.startIndex)!)
+        str?.insert("』", at: (str?.endIndex)!)
+        
+        let lab=UILabel(frame:CGRect(x: 0, y:rect.height+10, width: g_screenSize.width-60, height: 16))
+        lab.textAlignment = NSTextAlignment.right
+        lab.lineBreakMode = .byWordWrapping
+        lab.numberOfLines = 0
+        lab.text = str
+        g_contentLab.addSubview(lab)
+
+    }
+    
+    func showWeather()
+    {
+        AppUtil.snowAct(view: g_imageView!)
+        
+        LocationMgr.instance.city() { (city) in
+            print(city)
+            print(city?.transformToPinYin())
+            self.g_weatherInfo.city = city!
+            AppUtil.weatherData(city:(city?.transformToPinYin())!,info: &self.g_weatherInfo)
+            print("aaaaaaaaaaaaaaaaaa",self.g_weatherInfo.city,self.g_weatherInfo.temp,self.g_weatherInfo.weather,self.g_weatherInfo.time)
+            let str = String.init(format: "%@       %@      %@      %@", self.g_weatherInfo.city,self.g_weatherInfo.weather,self.g_weatherInfo.temp,self.g_weatherInfo.time)
+//            let lab=UILabel(frame:CGRect(x: 0, y:460, width: self.g_screenSize.width, height: 16))
+            self.g_weatherLab.isHidden = false
+            self.g_weatherLab.textAlignment = NSTextAlignment.center
+            self.g_weatherLab.lineBreakMode = .byWordWrapping
+//            lab.textColor = UIColor.white
+//            lab.backgroundColor = UIColor.black
+            self.g_weatherLab.numberOfLines = 0
+            self.g_weatherLab.text = str
+//            self.view?.addSubview(lab)
+            
+//            print("aaaaaaaaaaaaaaaaaa",self.g_weatherInfo.city,self.g_weatherInfo.temp,self.g_weatherInfo.weather,self.g_weatherInfo.time)
+            
+        }
+    }
+    func showCanLike(_ canLike:Bool)
+    {
+        
     }
     
     // 显示隐藏界面上的东西
@@ -117,22 +183,22 @@ class ViewController: UIViewController {
     // 设置页面
     @IBAction func clickSetting(_ sender: UIButton) {
         
-//        AppUtil.getWeather()
-        
-        
-        LocationMgr.instance.city() { (city) in
-            print(city)
-            print(city?.transformToPinYin())
-            AppUtil.weatherData(city:(city?.transformToPinYin())!)
-        }
-        
-        
-        
-//        self.hiddenInfo(show: true)
+        self.hiddenInfo(hidden: true)
 
-//        AppUtil.gaussianBlur(view: g_imageView!)
-//        AppUtil.addView(vc: self, name: "SettingViewController",closure: {self.hiddenInfo(hidden: false)})
+        AppUtil.gaussianBlur(view: g_imageView!)
+        AppUtil.addView(vc: self, name: "SettingViewController",closure: {self.hiddenInfo(hidden: false)})
 
+    }
+    @IBAction func clickLike(_ sender: UIButton) {
+        print("aaaaaaaaaaaaaaaaaa",g_weatherInfo.city,g_weatherInfo.temp,g_weatherInfo.weather,g_weatherInfo.time)
+//        0：点赞成功
+//        1001：已点过赞
+//        1002：数据异常
+        AppUtil.likeApp(uid: AppUtil.uid(), handler: { (url, data) in
+            let json = try? JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String: Any]
+            let code = json?["code"]as! NSNumber
+            print(code)
+        })
     }
 }
 
