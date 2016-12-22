@@ -173,7 +173,7 @@ class ViewController: UIViewController {
 //        g_likeBtn.isEnabled = canLike
         if g_likeBtn1 == nil
         {
-            g_likeBtn1 = UIButton()
+            g_likeBtn1 = UIButton(type: .custom)
             g_likeBtn1?.isEnabled = true
             g_likeBtn1?.setImage(UIImage.init(named: "btn_unlike"), for: .normal)
             g_likeBtn1?.adjustsImageWhenHighlighted = true
