@@ -17,7 +17,6 @@ target 'HopeApp' do
     # Pods for testing
   end
 
-
 pod 'Kingfisher', '3.1.1'
-pod 'Alamofire'
+pod 'Alamofire', '4.0.1'
 end
