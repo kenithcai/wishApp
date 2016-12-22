@@ -25,14 +25,17 @@ class ViewController: UIViewController {
     
     var g_screenSize:CGRect = UIScreen.main.bounds
     var g_imageView:UIImageView? = nil
-    var g_labView:UILabel? = nil
+    var g_likeBtn1:UIButton? = nil
     var g_weatherInfo:WeatherInfo = WeatherInfo()
+    var g_likeCount:Int = 0
     
     @IBOutlet weak var g_weatherLab: UILabel!
     @IBOutlet weak var g_contentLab: MyLabel!
     @IBOutlet weak var g_shareBtn: UIButton!
     @IBOutlet weak var g_settingBtn: UIButton!
-
+    @IBOutlet weak var g_likeBtn: UIButton!
+    @IBOutlet weak var g_likeNum: UILabel!
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -42,7 +45,7 @@ class ViewController: UIViewController {
     func reloadData()
     {
         // TODO:test
-        let url = String.init(format: formatUrl, "1111111111111")
+        let url = String.init(format: formatUrl, "2222")
 //        let url = String.init(format: formatUrl, AppUtil.uid())
         Alamofire.request(url, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
@@ -51,12 +54,15 @@ class ViewController: UIViewController {
                 if response.result.value != nil
                 {
                     let json = response.result.value as? [String:AnyObject]
+                    print(json)
                     let content = json?["content"] as? String
                     let picUrl = json?["picture"] as? String
 //                    let time = json?["release_date"] as? String
 //                    print("content:\(content), pic:\(picUrl),time:\(time)")
                     let author = json?["author"] as? String
-                    let canLike = json?["can_give_like"] as? Bool
+                    let canLike = json?["can_give_like"] as? NSNumber
+                    let num = json?["like"] as? Int
+                    self.g_likeCount = num!
                     // 显示图片
                     self.showImg(picUrl)
                     // 显示文字
@@ -64,7 +70,7 @@ class ViewController: UIViewController {
                     // 显示天气
                     self.showWeather()
                     // 是否可点赞
-                    self.showCanLike(canLike!)
+                    self.showCanLike(canLike! == 1)
                 }
                 break
                 
@@ -142,11 +148,11 @@ class ViewController: UIViewController {
         self.g_weatherLab.text = str
         
         LocationMgr.instance.city() { (city) in
-            print(city)
-            print(city?.transformToPinYin())
+//            print(city)
+//            print(city?.transformToPinYin())
             self.g_weatherInfo.city = city!
             AppUtil.weatherData(city:(city?.transformToPinYin())!,info: &self.g_weatherInfo)
-            print("aaaaaaaaaaaaaaaaaa",self.g_weatherInfo.city,self.g_weatherInfo.temp,self.g_weatherInfo.weather,self.g_weatherInfo.time)
+//            print("aaaaaaaaaaaaaaaaaa",self.g_weatherInfo.city,self.g_weatherInfo.temp,self.g_weatherInfo.weather,self.g_weatherInfo.time)
             let str = String.init(format: "%@    %@    %@    %@",
                                   self.g_weatherInfo.city,
                                   AppUtil.weatherToCN(self.g_weatherInfo.weather),
@@ -163,7 +169,45 @@ class ViewController: UIViewController {
     }
     func showCanLike(_ canLike:Bool)
     {
+        // 按钮状态
+//        g_likeBtn.isEnabled = canLike
+        if g_likeBtn1 == nil
+        {
+            g_likeBtn1 = UIButton()
+            g_likeBtn1?.isEnabled = true
+            g_likeBtn1?.setImage(UIImage.init(named: "btn_unlike"), for: .normal)
+            g_likeBtn1?.adjustsImageWhenHighlighted = true
+//            g_likeBtn1?.addTarget(self, action:#selector(clickLike), for:.touchUpInside)
+            g_likeBtn1?.addTarget(self, action: Selector("\(clickLike)"), for: UIControlEvents.touchUpInside)
+            g_likeNum.addSubview(g_likeBtn1!);
+        }
+        g_likeBtn.isHidden = false
+        if canLike == true
+        {
+            g_likeBtn.setImage(UIImage.init(named: "btn_unlike"), for: .normal)
+        }
+        else
+        {
+            g_likeBtn.setImage(UIImage.init(named: "btn_like"), for: .normal)
+        }
+    
+        // 点赞数量
+//        self.g_likeCount = 19
+        var str = String.init(format: "%d", self.g_likeCount)
+        if self.g_likeCount > 999 {
+            str = String.init(format: "%d⁺", 999)
+        }
+//        g_likeNum.backgroundColor = UIColor.black
+        g_likeNum.textAlignment = NSTextAlignment.right
+        g_likeNum.isHidden = false
+        g_likeNum.text = str
+        g_likeNum.sizeToFit()
         
+        
+        g_likeBtn1?.frame = CGRect(x:10, y:0, width:20, height:21)
+//        let rect = g_likeNum.bounds
+//        let size = g_likeBtn.bounds.size
+//        g_likeBtn1.frame = CGRect(x:10, y:0, width:size.width, height:size.height)
     }
     
     // 显示隐藏界面上的东西
@@ -171,7 +215,7 @@ class ViewController: UIViewController {
     {
         g_settingBtn.isHidden = hidden
         g_shareBtn.isHidden = hidden
-        g_labView?.isHidden = hidden
+        
         
         if (g_imageView == nil) {
             return
@@ -211,8 +255,15 @@ class ViewController: UIViewController {
 //        1002：数据异常
         AppUtil.likeApp(uid: AppUtil.uid(), handler: { (url, data) in
             let json = try? JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String: Any]
+            print(json)
             let code = json?["code"]as! NSNumber
-            print(code)
+            let num = json?["like"]as! Int
+            if code == 0
+            {
+                self.g_likeCount += 1
+                self.showCanLike(code == 0)
+            }
+ 
         })
     }
 }

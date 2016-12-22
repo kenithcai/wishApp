@@ -102,7 +102,8 @@ class AppUtil
     // 获取Uid
     class func uid()->String
     {
-        return CMUUIDManager.readUUID() as! String
+        return "1111"
+//        return CMUUIDManager.readUUID() as! String
     }
     // 截全屏
     class func screenShots()->UIImage

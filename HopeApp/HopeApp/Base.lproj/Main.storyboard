@@ -85,17 +85,6 @@
                                     <constraint firstAttribute="height" constant="182" id="zIB-tK-aXN"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a0j-Wz-LRJ">
-                                <rect key="frame" x="325" y="629" width="31" height="30"/>
-                                <state key="normal" title="点赞"/>
-                                <connections>
-                                    <action selector="clickLike:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UD8-7P-Fxq"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RJg-gy-RGk">
-                                <rect key="frame" x="274" y="629" width="31" height="30"/>
-                                <state key="normal" title="评论"/>
-                            </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xrC-Et-D3X" customClass="MyLabel">
                                 <rect key="frame" x="16" y="507" width="343" height="114"/>
                                 <constraints>
@@ -114,30 +103,48 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FIM-5b-BHv">
+                                <rect key="frame" x="0.0" y="635" width="375" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="BNf-ZZ-l1V"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BU1-Fh-pIW">
+                                <rect key="frame" x="280" y="640" width="20" height="22"/>
+                                <state key="normal" image="btn_like"/>
+                                <connections>
+                                    <action selector="clickLike:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wC5-Zh-LSB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xrC-Et-D3X" firstAttribute="leading" secondItem="cS1-a0-U6u" secondAttribute="leading" id="0iM-EH-nrQ"/>
                             <constraint firstItem="hJE-Sc-uEN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="3" id="1vp-ni-ulJ"/>
-                            <constraint firstItem="a0j-Wz-LRJ" firstAttribute="trailing" secondItem="hJE-Sc-uEN" secondAttribute="trailing" id="3KG-3p-TcB"/>
-                            <constraint firstItem="a0j-Wz-LRJ" firstAttribute="leading" secondItem="RJg-gy-RGk" secondAttribute="trailing" constant="20" id="9KG-bR-bAY"/>
                             <constraint firstItem="cS1-a0-U6u" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="EBW-HT-gel"/>
                             <constraint firstItem="BqZ-f4-vX7" firstAttribute="leading" secondItem="0zQ-zB-5gV" secondAttribute="leading" id="Hii-LW-9bO"/>
                             <constraint firstItem="0zQ-zB-5gV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Iiu-Tr-tZx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hJE-Sc-uEN" secondAttribute="trailing" constant="3" id="JJY-E7-raH"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="a0j-Wz-LRJ" secondAttribute="bottom" constant="8" symbolic="YES" id="Knq-Oa-7pJ"/>
+                            <constraint firstItem="FIM-5b-BHv" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="RBj-az-gzT"/>
+                            <constraint firstItem="0zQ-zB-5gV" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="TMA-fK-y92"/>
                             <constraint firstItem="xrC-Et-D3X" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Vuq-Au-W3S"/>
-                            <constraint firstItem="a0j-Wz-LRJ" firstAttribute="top" secondItem="0zQ-zB-5gV" secondAttribute="bottom" constant="-38" id="ZGK-CY-l9l"/>
+                            <constraint firstItem="0zQ-zB-5gV" firstAttribute="trailing" secondItem="BqZ-f4-vX7" secondAttribute="trailing" id="a4a-xd-wVg"/>
                             <constraint firstAttribute="leadingMargin" secondItem="cS1-a0-U6u" secondAttribute="leading" id="czW-ui-Ve7"/>
+                            <constraint firstItem="BU1-Fh-pIW" firstAttribute="leading" secondItem="FIM-5b-BHv" secondAttribute="trailing" constant="-95" id="drr-rd-dmB"/>
                             <constraint firstItem="BqZ-f4-vX7" firstAttribute="centerX" secondItem="xrC-Et-D3X" secondAttribute="centerX" id="ew2-7f-tSV"/>
-                            <constraint firstItem="a0j-Wz-LRJ" firstAttribute="baseline" secondItem="RJg-gy-RGk" secondAttribute="baseline" id="hPD-ge-gTS"/>
+                            <constraint firstItem="FIM-5b-BHv" firstAttribute="trailing" secondItem="0zQ-zB-5gV" secondAttribute="trailing" id="g53-Id-wQe"/>
                             <constraint firstItem="xrC-Et-D3X" firstAttribute="top" secondItem="BqZ-f4-vX7" secondAttribute="bottom" constant="19" id="lbJ-MG-Y4q"/>
+                            <constraint firstItem="BU1-Fh-pIW" firstAttribute="top" secondItem="FIM-5b-BHv" secondAttribute="bottom" constant="-27" id="mTb-Bf-vKK"/>
                             <constraint firstItem="0zQ-zB-5gV" firstAttribute="top" secondItem="xrC-Et-D3X" secondAttribute="bottom" constant="-136" id="ok0-Mr-qcW"/>
-                            <constraint firstItem="a0j-Wz-LRJ" firstAttribute="leading" secondItem="0zQ-zB-5gV" secondAttribute="trailing" constant="-50" id="vLL-zd-gt0"/>
+                            <constraint firstItem="FIM-5b-BHv" firstAttribute="leading" secondItem="0zQ-zB-5gV" secondAttribute="leading" id="u9L-jZ-vnw"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="g_contentLab" destination="xrC-Et-D3X" id="4b3-fu-ZfE"/>
+                        <outlet property="g_likeBtn" destination="BU1-Fh-pIW" id="s4Z-3N-YGf"/>
+                        <outlet property="g_likeNum" destination="FIM-5b-BHv" id="oHS-Ll-TQK"/>
                         <outlet property="g_settingBtn" destination="cS1-a0-U6u" id="QnR-uF-Iri"/>
                         <outlet property="g_shareBtn" destination="hJE-Sc-uEN" id="E06-eW-3Bi"/>
                         <outlet property="g_weatherLab" destination="BqZ-f4-vX7" id="DcG-mY-uDS"/>
@@ -178,6 +185,7 @@
     </scenes>
     <resources>
         <image name="btn_close" width="20" height="20"/>
+        <image name="btn_like" width="20" height="20"/>
         <image name="btn_list" width="20" height="20"/>
         <image name="btn_share" width="20" height="20"/>
     </resources>
