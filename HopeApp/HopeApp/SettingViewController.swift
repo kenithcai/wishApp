@@ -11,8 +11,8 @@ import MessageUI
 
 class SettingViewController: BaseViewController,UITableViewDelegate, UITableViewDataSource,MFMailComposeViewControllerDelegate{
 
-    var m_names:[String] = ["设置","意见反馈","给我打分","分享给朋友","关于"]
-    var m_images:[String] = ["btn_set","btn_msg","btn_score","btn_share_set","btn_about"]
+    var m_names:[String] = ["意见反馈","给我打分","分享给朋友","关于"]
+    var m_images:[String] = ["btn_msg","btn_score","btn_share_set","btn_about"]
     
     override func viewDidLoad() {
         super.viewDidLoad()

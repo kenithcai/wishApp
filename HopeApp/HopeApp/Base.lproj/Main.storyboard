@@ -21,14 +21,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BM9-8w-Puh" userLabel="afda" colorLabel="IBBuiltInLabel-Red">
-                                <rect key="frame" x="16" y="286" width="343" height="343"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="dataSource" destination="qVz-Np-JnD" id="AK5-rY-329"/>
-                                    <outlet property="delegate" destination="qVz-Np-JnD" id="74I-Qo-aiP"/>
-                                </connections>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cNh-UZ-VGR">
                                 <rect key="frame" x="16" y="28" width="20" height="22"/>
                                 <state key="normal" image="btn_close"/>
@@ -36,15 +28,25 @@
                                     <action selector="clickCloseBtn:" destination="qVz-Np-JnD" eventType="touchUpInside" id="WnG-pA-Dea"/>
                                 </connections>
                             </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" indicatorStyle="black" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BM9-8w-Puh" userLabel="afda" colorLabel="IBBuiltInLabel-Red">
+                                <rect key="frame" x="16" y="457" width="343" height="190"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="190" id="P8c-ey-LEO"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="dataSource" destination="qVz-Np-JnD" id="AK5-rY-329"/>
+                                    <outlet property="delegate" destination="qVz-Np-JnD" id="74I-Qo-aiP"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="BM9-8w-Puh" secondAttribute="leading" id="BlZ-5u-kIy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BM9-8w-Puh" secondAttribute="trailing" id="gtC-H2-fRb"/>
-                            <constraint firstItem="AbN-8c-Nl1" firstAttribute="top" secondItem="BM9-8w-Puh" secondAttribute="bottom" constant="38" id="nA6-n9-Soz"/>
+                            <constraint firstItem="AbN-8c-Nl1" firstAttribute="top" secondItem="BM9-8w-Puh" secondAttribute="bottom" constant="20" id="nA6-n9-Soz"/>
                             <constraint firstItem="cNh-UZ-VGR" firstAttribute="top" secondItem="ot6-B6-DQ7" secondAttribute="bottom" constant="8" id="rTp-cP-euZ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="cNh-UZ-VGR" secondAttribute="leading" id="taF-y9-aYR"/>
-                            <constraint firstItem="BM9-8w-Puh" firstAttribute="top" secondItem="ot6-B6-DQ7" secondAttribute="bottom" constant="266" id="vnu-fw-2Si"/>
                         </constraints>
                     </view>
                 </viewController>
