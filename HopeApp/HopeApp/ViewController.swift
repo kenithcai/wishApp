@@ -247,7 +247,7 @@ class ViewController: UIViewController {
             if code.intValue == 0
             {
                 self.g_likeCount = num
-                self.showCanLike(true)
+                self.showCanLike(false)
             }
             else
             {

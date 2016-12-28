@@ -59,14 +59,12 @@ class SettingViewController: BaseViewController,UITableViewDelegate, UITableView
         switch indexPath.row
         {
         case 0:
-            print("indexPath.row = \(indexPath.row)")
-        case 1:
             self.sendMail()
-        case 2:
+        case 1:
             self.gotoAppStore()
-        case 3:
+        case 2:
             print("indexPath.row = \(indexPath.row)")
-        case 4:
+        case 3:
             print("indexPath.row = \(indexPath.row)")
         default:
             print("indexPath.row = \(indexPath.row)")

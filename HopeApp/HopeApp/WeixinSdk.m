@@ -73,15 +73,27 @@ static WeixinSdk * delegate = nil;
 }
 
 - (void) dealSendMessageResp:(SendMessageToWXResp *)rep {
-    NSString *strTitle = [NSString stringWithFormat:@"发送媒体消息结果"];
-    NSString *strMsg = [NSString stringWithFormat:@"errcode:%d", rep.errCode];
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:strTitle
+    NSString *strMsg = nil;
+    if (rep.errCode == 0)
+    {
+        strMsg = @"发送成功";
+    }
+    else
+    {
+        strMsg = @"发送失败";
+    }
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                     message:strMsg
                                                    delegate:self
-                                          cancelButtonTitle:@"OK"
+                                          cancelButtonTitle:nil
                                           otherButtonTitles:nil, nil];
     [alert show];
+    [NSTimer scheduledTimerWithTimeInterval:2.0f repeats:false block:^(NSTimer*time){
+        [alert dismissWithClickedButtonIndex:0 animated:YES];
+        NSLog(@"The date and time is");
+    }];
 }
 
 -(void) dealSendAuthResp:(SendAuthResp *)rep
