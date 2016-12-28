@@ -169,8 +169,15 @@ open class LocationMgr: NSObject,CLLocationManagerDelegate{
     }
     //获取城市
     func city(_ city:@escaping cityString) -> Void {
-        startLocation()
-        onCityString = city;
+        if AppUtil.simulator() {
+            city("广州")
+        }
+        else
+        {
+            startLocation()
+            onCityString = city;
+        }
+        
     }
     
     //获取经纬度

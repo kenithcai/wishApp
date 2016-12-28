@@ -75,6 +75,20 @@ extension UIImage {
 
 class AppUtil
 {
+    struct Platform {
+        static let isSimulator: Bool = {
+            var isSim = false
+            #if arch(i386) || arch(x86_64)
+                isSim = true
+            #endif
+            return isSim
+        }()
+    }
+    class func simulator()->Bool
+    {
+        return Platform.isSimulator
+    }
+    
     typealias FuncBlock = ()->()
     
     //创建高斯模糊效果的背景
@@ -99,11 +113,16 @@ class AppUtil
         vc.present(rec!, animated: true)
     }
     
+    
+    
     // 获取Uid
     class func uid()->String
     {
-        return "1111"
-//        return CMUUIDManager.readUUID() as! String
+        if Platform.isSimulator {
+            return "1111"
+        }
+        
+        return CMUUIDManager.readUUID() as! String
     }
     // 截全屏
     class func screenShots()->UIImage
@@ -142,7 +161,7 @@ class AppUtil
     // 天气情况
     class func weatherToCN(_ weather:String)->String
     {
-        var dic:Dictionary<String,String>=["wind":"阵风","clouds":"多云","rain":"有雨","snow":"下雪", "Haze":"阴霾"];
+        var dic:Dictionary<String,String>=["Wind":"阵风","Clouds":"多云","Rain":"有雨","Snow":"下雪", "Haze":"阴霾", "Clear":"晴天"];
         let info = dic[weather]
         return (info != nil) ? info! : weather
     }
@@ -169,7 +188,7 @@ class AppUtil
         //日期格式化输出
         let dformatter = DateFormatter()
 //        dformatter.dateFormat = "yyyy年MM月dd日 HH:mm:ss"
-        dformatter.dateFormat = "MMM d, yyyy"
+        dformatter.dateFormat = "yyyy/MM/dd"
         
         let timeInterval3 = TimeInterval(jsonData["dt"] as!Int)
         let date3 = NSDate(timeIntervalSince1970: timeInterval3)
@@ -259,9 +278,9 @@ class AppUtil
     }
     
     // http get请求
-    class func likeApp(uid:String, handler: @escaping (URL?,Data?)->Void)
+    class func likeApp(_ cid:Int, _ uid:String, handler: @escaping (URL?,Data?)->Void)
     {
-        let urlStr:NSString = String(format:"http://blog.fathoo.xyz/index.php?a=hope&m=giveLike&id=1&device_id=%@",uid) as NSString
+        let urlStr:NSString = String(format:"http://blog.fathoo.xyz/index.php?a=hope&m=giveLike&id=%d&device_id=%@",cid,uid) as NSString
         let url:NSURL = NSURL(string: urlStr as String)!
         if let jsonData = NSData(contentsOf: url as URL)
         {
@@ -272,6 +291,20 @@ class AppUtil
         //        let request:NSURLRequest = NSURLRequest(url: url as URL)
         //(3) 发送请求
         //NSURLConnection.sendAsynchronousRequest(request as URLRequest, queue:OperationQueue(), completionHandler: handler)
+    }
+    
+    // 提示框(2s后消失)
+    class func alert(_ title:String,_ target:UIViewController)
+    {
+        let alertController = UIAlertController(title: title,
+                                                message: nil, preferredStyle: .alert)
+        //显示提示框
+        target.present(alertController, animated: true, completion: nil)
+        //两秒钟后自动消失
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2)
+        {
+            target.presentedViewController?.dismiss(animated: false, completion: nil)
+        }
     }
 }
 

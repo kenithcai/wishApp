@@ -25,15 +25,15 @@ class ViewController: UIViewController {
     
     var g_screenSize:CGRect = UIScreen.main.bounds
     var g_imageView:UIImageView? = nil
-    var g_likeBtn1:UIButton? = nil
+    var g_likeBtn:UIButton? = nil
     var g_weatherInfo:WeatherInfo = WeatherInfo()
     var g_likeCount:Int = 0
+    var g_contentId:Int = 0
     
     @IBOutlet weak var g_weatherLab: UILabel!
     @IBOutlet weak var g_contentLab: MyLabel!
     @IBOutlet weak var g_shareBtn: UIButton!
     @IBOutlet weak var g_settingBtn: UIButton!
-    @IBOutlet weak var g_likeBtn: UIButton!
     @IBOutlet weak var g_likeNum: UILabel!
     
     override func didReceiveMemoryWarning() {
@@ -44,9 +44,7 @@ class ViewController: UIViewController {
     let formatUrl = "http://blog.fathoo.xyz/index.php?a=hope&m=getSencence&device_id=%@"
     func reloadData()
     {
-        // TODO:test
-        let url = String.init(format: formatUrl, "2222")
-//        let url = String.init(format: formatUrl, AppUtil.uid())
+        let url = String.init(format: formatUrl, AppUtil.uid())
         Alamofire.request(url, method: .post, parameters: nil, encoding: JSONEncoding.default, headers: nil).responseJSON { (response:DataResponse<Any>) in
             
             switch(response.result) {
@@ -63,6 +61,7 @@ class ViewController: UIViewController {
                     let canLike = json?["can_give_like"] as? NSNumber
                     let num = json?["like"] as? Int
                     self.g_likeCount = num!
+                    self.g_contentId = (json?["id"] as? Int)!
                     // 显示图片
                     self.showImg(picUrl)
                     // 显示文字
@@ -70,7 +69,7 @@ class ViewController: UIViewController {
                     // 显示天气
                     self.showWeather()
                     // 是否可点赞
-                    self.showCanLike(canLike! == 1)
+                    self.showCanLike(canLike?.intValue == 1)
                 }
                 break
                 
@@ -134,25 +133,9 @@ class ViewController: UIViewController {
         // TODO:test1
         AppUtil.snowAct(view: g_imageView!)
         
-        let city = "guangzhou"
-        self.g_weatherInfo.city = city
-        AppUtil.weatherData(city:(city.transformToPinYin()),info: &self.g_weatherInfo)
-        print("aaaaaaaaaaaaaaaaaa",self.g_weatherInfo.city,self.g_weatherInfo.temp,self.g_weatherInfo.weather,self.g_weatherInfo.time)
-        let str = String.init(format: "%@    %@    %@   %@",
-                              self.g_weatherInfo.city,
-                              AppUtil.weatherToCN(self.g_weatherInfo.weather),
-                              self.g_weatherInfo.temp,
-                              self.g_weatherInfo.time)
-        self.g_weatherLab.isHidden = false
-        self.g_weatherLab.textAlignment = NSTextAlignment.right
-        self.g_weatherLab.text = str
-        
         LocationMgr.instance.city() { (city) in
-//            print(city)
-//            print(city?.transformToPinYin())
             self.g_weatherInfo.city = city!
             AppUtil.weatherData(city:(city?.transformToPinYin())!,info: &self.g_weatherInfo)
-//            print("aaaaaaaaaaaaaaaaaa",self.g_weatherInfo.city,self.g_weatherInfo.temp,self.g_weatherInfo.weather,self.g_weatherInfo.time)
             let str = String.init(format: "%@    %@    %@    %@",
                                   self.g_weatherInfo.city,
                                   AppUtil.weatherToCN(self.g_weatherInfo.weather),
@@ -160,73 +143,73 @@ class ViewController: UIViewController {
                                   self.g_weatherInfo.time)
             self.g_weatherLab.isHidden = false
             self.g_weatherLab.textAlignment = NSTextAlignment.center
-//            self.g_weatherLab.lineBreakMode = .byWordWrapping
             self.g_weatherLab.numberOfLines = 0
             self.g_weatherLab.text = str
-//            print("aaaaaaaaaaaaaaaaaa",self.g_weatherInfo.city,self.g_weatherInfo.temp,self.g_weatherInfo.weather,self.g_weatherInfo.time)
-            
         }
     }
     func showCanLike(_ canLike:Bool)
     {
         // 按钮状态
-//        g_likeBtn.isEnabled = canLike
-        if g_likeBtn1 == nil
+        if g_likeBtn == nil
         {
-            g_likeBtn1 = UIButton(type: .custom)
-            g_likeBtn1?.isEnabled = true
-            g_likeBtn1?.setImage(UIImage.init(named: "btn_unlike"), for: .normal)
-            g_likeBtn1?.adjustsImageWhenHighlighted = true
-//            g_likeBtn1?.addTarget(self, action:#selector(clickLike), for:.touchUpInside)
-            g_likeBtn1?.addTarget(self, action: Selector("\(clickLike)"), for: UIControlEvents.touchUpInside)
-            g_likeNum.addSubview(g_likeBtn1!);
+            g_likeBtn = UIButton(type: .custom)
+            g_likeBtn?.isEnabled = true
+            g_likeBtn?.addTarget(self, action:#selector(clickLike(_:)), for:.touchUpInside)
+            self.view.addSubview(g_likeBtn!);
         }
-        g_likeBtn.isHidden = false
+        // 按钮状态
         if canLike == true
         {
-            g_likeBtn.setImage(UIImage.init(named: "btn_unlike"), for: .normal)
+            g_likeBtn?.setImage(UIImage.init(named: "btn_unlike"), for: .normal)
         }
         else
         {
-            g_likeBtn.setImage(UIImage.init(named: "btn_like"), for: .normal)
+            g_likeBtn?.setImage(UIImage.init(named: "btn_like"), for: .normal)
         }
     
         // 点赞数量
-//        self.g_likeCount = 19
         var str = String.init(format: "%d", self.g_likeCount)
         if self.g_likeCount > 999 {
             str = String.init(format: "%d⁺", 999)
         }
-//        g_likeNum.backgroundColor = UIColor.black
         g_likeNum.textAlignment = NSTextAlignment.right
         g_likeNum.isHidden = false
         g_likeNum.text = str
         g_likeNum.sizeToFit()
         
-        
-        g_likeBtn1?.frame = CGRect(x:10, y:0, width:20, height:21)
-//        let rect = g_likeNum.bounds
-//        let size = g_likeBtn.bounds.size
-//        g_likeBtn1.frame = CGRect(x:10, y:0, width:size.width, height:size.height)
+        // 按钮位置
+        let rect = g_likeNum.bounds
+        g_likeBtn?.frame = CGRect(x:g_screenSize.size.width-20-10-rect.size.width, y:g_screenSize.size.height-5-rect.size.height, width:20, height:21)
     }
     
     // 显示隐藏界面上的东西
     func hiddenInfo(hidden: Bool)
     {
-        g_settingBtn.isHidden = hidden
-        g_shareBtn.isHidden = hidden
+        let views = self.view.subviews
         
-        
-        if (g_imageView == nil) {
+        for child in views
+        {
+            if child != g_imageView {
+                child.isHidden = hidden
+            }
+        }
+        if (g_imageView == nil)
+        {
             return
         }
         let view = g_imageView!.viewWithTag(GaussianBlurTag)
         if (view != nil) {
             view?.removeFromSuperview()
         }
+        
     }
     // 分享
     @IBAction func clickShare(_ sender: UIButton) {
+        
+        if g_imageView == nil {
+            return
+        }
+        
         self.hiddenInfo(hidden: true)
         
         AppUtil.gaussianBlur(view: g_imageView!)
@@ -242,6 +225,10 @@ class ViewController: UIViewController {
     // 设置页面
     @IBAction func clickSetting(_ sender: UIButton) {
         
+        if g_imageView == nil {
+            return
+        }
+        
         self.hiddenInfo(hidden: true)
 
         AppUtil.gaussianBlur(view: g_imageView!)
@@ -249,21 +236,24 @@ class ViewController: UIViewController {
 
     }
     @IBAction func clickLike(_ sender: UIButton) {
-        print("aaaaaaaaaaaaaaaaaa",g_weatherInfo.city,g_weatherInfo.temp,g_weatherInfo.weather,g_weatherInfo.time)
 //        0：点赞成功
 //        1001：已点过赞
 //        1002：数据异常
-        AppUtil.likeApp(uid: AppUtil.uid(), handler: { (url, data) in
+        AppUtil.likeApp(self.g_contentId, AppUtil.uid(), handler: { (url, data) in
             let json = try? JSONSerialization.jsonObject(with: data!, options:.allowFragments) as! [String: Any]
             print(json)
             let code = json?["code"]as! NSNumber
             let num = json?["like"]as! Int
-            if code == 0
+            if code.intValue == 0
             {
-                self.g_likeCount += 1
-                self.showCanLike(code == 0)
+                self.g_likeCount = num
+                self.showCanLike(true)
             }
- 
+            else
+            {
+                let str = code.intValue == 1001 ? "您已点赞" : "数据异常"
+                AppUtil.alert(str, self)
+            }
         })
     }
 }
