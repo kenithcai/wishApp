@@ -232,7 +232,8 @@ class ViewController: UIViewController {
         self.hiddenInfo(hidden: true)
 
         AppUtil.gaussianBlur(view: g_imageView!)
-        AppUtil.addView(vc: self, name: "SettingViewController",closure: {self.hiddenInfo(hidden: false)})
+//        AppUtil.addView(vc: self, name: "SettingViewController",closure: {self.hiddenInfo(hidden: false)})
+        AppUtil.addView(vc: self, name: "MP3PlayerViewController",closure: {self.hiddenInfo(hidden: false)})
 
     }
     @IBAction func clickLike(_ sender: UIButton) {

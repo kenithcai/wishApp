@@ -46,6 +46,11 @@ static int register_all_packages()
 
 bool AppDelegate::applicationDidFinishLaunching()
 {
+    printf("plam = %d = %d\n",TARGET_OS_SIMULATOR,TARGET_IPHONE_SIMULATOR);
+    if (TARGET_IPHONE_SIMULATOR == TARGET_OS_SIMULATOR)
+    {
+        printf("模拟器\n");
+    }
     // set default FPS
     Director::getInstance()->setAnimationInterval(1.0 / 60.0f);
 

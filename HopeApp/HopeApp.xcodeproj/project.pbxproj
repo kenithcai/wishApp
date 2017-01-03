@@ -10,6 +10,7 @@
 		622C9B3EA5E8F190D20A28ED /* Pods_HopeAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AAD0A91DF419D0A0542C3082 /* Pods_HopeAppTests.framework */; };
 		7742BAE29093FDD33B181EC2 /* Pods_HopeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838B5F4006166D4DCF3C1E44 /* Pods_HopeApp.framework */; };
 		8E34775ED7862048AF3A8FFE /* Pods_HopeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E9DD43E7EF11309F655368 /* Pods_HopeAppUITests.framework */; };
+		D40258481E1B436900D129AF /* MP3PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40258471E1B436900D129AF /* MP3PlayerViewController.swift */; };
 		D40C72CC1DF95E1B00CA5E0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40C72CB1DF95E1B00CA5E0D /* Assets.xcassets */; };
 		D41D81BA1DE43B5000D9323B /* CMUUIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D81B91DE43B5000D9323B /* CMUUIDManager.m */; };
 		D41D81BE1DE43BAF00D9323B /* CMKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D81BD1DE43BAF00D9323B /* CMKeyChain.m */; };
@@ -68,6 +69,7 @@
 		838B5F4006166D4DCF3C1E44 /* Pods_HopeApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HopeApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		96C95A4B6BC2F4B4DDFD9300 /* Pods-HopeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopeAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HopeAppUITests/Pods-HopeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AAD0A91DF419D0A0542C3082 /* Pods_HopeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HopeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D40258471E1B436900D129AF /* MP3PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MP3PlayerViewController.swift; sourceTree = "<group>"; };
 		D40C72CB1DF95E1B00CA5E0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D41D81B91DE43B5000D9323B /* CMUUIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMUUIDManager.m; sourceTree = "<group>"; };
 		D41D81BB1DE43B5A00D9323B /* CMUUIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMUUIDManager.h; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				D41FCC251DCDB993001F6C94 /* HopeApp.xcdatamodeld */,
 				D4CC592A1DD062D00055C317 /* SettingViewController.swift */,
 				D4CC592C1DD062DE0055C317 /* ShareViewController.swift */,
+				D40258471E1B436900D129AF /* MP3PlayerViewController.swift */,
 				D483E6231DDEA76100093C09 /* BaseViewController.swift */,
 				D483E6921DE032FA00093C09 /* WeixinSdk.h */,
 				D483E67A1DE00A6400093C09 /* WeixinSdk.m */,
@@ -529,6 +532,7 @@
 				D4CC592B1DD062D00055C317 /* SettingViewController.swift in Sources */,
 				D483E6241DDEA76100093C09 /* BaseViewController.swift in Sources */,
 				D4FA976E1E09545D00FB8F0A /* MyLabel.m in Sources */,
+				D40258481E1B436900D129AF /* MP3PlayerViewController.swift in Sources */,
 				D4CCAD951DDDC90C004CDED0 /* AppUItil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

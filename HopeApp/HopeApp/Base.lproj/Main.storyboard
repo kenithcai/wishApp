@@ -76,6 +76,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hJE-Sc-uEN">
                                 <rect key="frame" x="336" y="23" width="20" height="22"/>
                                 <state key="normal" image="btn_share"/>
+                                <state key="selected" image="btn_share"/>
+                                <state key="highlighted" image="btn_share"/>
+                                <state key="focused" image="btn_share"/>
                                 <connections>
                                     <action selector="clickShare:" destination="BYZ-38-t0r" eventType="touchUpInside" id="2Pf-2u-4gd"/>
                                 </connections>
@@ -174,10 +177,129 @@
             </objects>
             <point key="canvasLocation" x="781.60000000000002" y="122.78860569715144"/>
         </scene>
+        <!--Player View Controller-->
+        <scene sceneID="m0W-EF-kJL">
+            <objects>
+                <viewController storyboardIdentifier="MP3PlayerViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="n5l-Ci-fwY" customClass="MP3PlayerViewController" customModule="HopeApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KnM-Yi-U6o"/>
+                        <viewControllerLayoutGuide type="bottom" id="wyt-Gt-ZAZ"/>
+                    </layoutGuides>
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="z73-nv-9Uf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ETl-Ns-ABr">
+                                <rect key="frame" x="16" y="20" width="20" height="22"/>
+                                <state key="normal" image="btn_close"/>
+                                <connections>
+                                    <action selector="clickCloseBtn:" destination="n5l-Ci-fwY" eventType="touchUpInside" id="C2g-25-yVw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jop-5Y-ZCa">
+                                <rect key="frame" x="8" y="617" width="30" height="30"/>
+                                <state key="normal" image="nowplaying_random"/>
+                                <connections>
+                                    <action selector="clickType:" destination="n5l-Ci-fwY" eventType="touchUpInside" id="z64-Es-ulm"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isa-1G-kll">
+                                <rect key="frame" x="323" y="607" width="50" height="50"/>
+                                <state key="normal" image="player_btn_playlist_highlight"/>
+                                <connections>
+                                    <action selector="clickList:" destination="n5l-Ci-fwY" eventType="touchUpInside" id="Wm5-fR-nIP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xZB-hD-VUQ">
+                                <rect key="frame" x="68" y="602" width="64" height="64"/>
+                                <state key="normal" image="player_btn_pre_normal"/>
+                                <connections>
+                                    <action selector="clickPre:" destination="n5l-Ci-fwY" eventType="touchUpInside" id="nvA-YP-Lep"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GTt-Mm-ooL">
+                                <rect key="frame" x="238" y="602" width="64" height="64"/>
+                                <state key="normal" image="player_btn_next_normal"/>
+                                <connections>
+                                    <action selector="clickNext:" destination="n5l-Ci-fwY" eventType="touchUpInside" id="45S-zQ-MrZ"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2rI-S7-Pdt">
+                                <rect key="frame" x="65" y="575" width="236" height="2"/>
+                                <color key="progressTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="trackTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </progressView>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yDm-eh-y1V">
+                                <rect key="frame" x="65" y="575" width="236" height="2"/>
+                                <color key="progressTintColor" red="0.57504153585430817" green="1" blue="0.22367431359734602" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </progressView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qx5-9e-Val">
+                                <rect key="frame" x="10" y="566" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sbw-Ld-twJ">
+                                <rect key="frame" x="324" y="566" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzT-MB-kBE">
+                                <rect key="frame" x="155" y="603" width="64" height="64"/>
+                                <state key="normal" image="player_btn_play_normal"/>
+                                <connections>
+                                    <action selector="clickPlay:" destination="n5l-Ci-fwY" eventType="touchUpInside" id="Wya-os-HBn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wyt-Gt-ZAZ" firstAttribute="top" secondItem="Sbw-Ld-twJ" secondAttribute="bottom" constant="80" id="2DQ-Pv-tgg"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2rI-S7-Pdt" secondAttribute="trailing" constant="58" id="3YD-NI-ucz"/>
+                            <constraint firstItem="wyt-Gt-ZAZ" firstAttribute="top" secondItem="2rI-S7-Pdt" secondAttribute="bottom" constant="90" id="408-Ec-kAk"/>
+                            <constraint firstItem="wyt-Gt-ZAZ" firstAttribute="top" secondItem="jop-5Y-ZCa" secondAttribute="bottom" constant="20" id="6BX-xH-In9"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="GTt-Mm-ooL" secondAttribute="trailing" constant="57" id="ACT-cl-qJT"/>
+                            <constraint firstItem="wyt-Gt-ZAZ" firstAttribute="top" secondItem="GTt-Mm-ooL" secondAttribute="bottom" constant="1" id="BUz-w4-Vfz"/>
+                            <constraint firstItem="wyt-Gt-ZAZ" firstAttribute="top" secondItem="fzT-MB-kBE" secondAttribute="bottom" id="GiG-5H-fEK"/>
+                            <constraint firstItem="2rI-S7-Pdt" firstAttribute="leading" secondItem="yDm-eh-y1V" secondAttribute="leading" id="Lwj-X2-YaC"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="jop-5Y-ZCa" secondAttribute="leading" constant="8" id="MXN-dq-bpF"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ETl-Ns-ABr" secondAttribute="leading" id="OZj-Mc-Y6D"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Sbw-Ld-twJ" secondAttribute="trailing" constant="-7" id="Q0z-2c-8Wf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yDm-eh-y1V" secondAttribute="trailing" constant="58" id="Rj6-M4-N1t"/>
+                            <constraint firstItem="Qx5-9e-Val" firstAttribute="leading" secondItem="z73-nv-9Uf" secondAttribute="leadingMargin" constant="-6" id="TG2-gf-25S"/>
+                            <constraint firstItem="wyt-Gt-ZAZ" firstAttribute="top" secondItem="xZB-hD-VUQ" secondAttribute="bottom" constant="1" id="TfF-34-kBM"/>
+                            <constraint firstItem="yDm-eh-y1V" firstAttribute="leading" secondItem="z73-nv-9Uf" secondAttribute="leadingMargin" constant="49" id="Xux-q3-vm1"/>
+                            <constraint firstItem="wyt-Gt-ZAZ" firstAttribute="top" secondItem="yDm-eh-y1V" secondAttribute="bottom" constant="90" id="Z6D-So-jcO"/>
+                            <constraint firstItem="xZB-hD-VUQ" firstAttribute="leading" secondItem="z73-nv-9Uf" secondAttribute="leadingMargin" constant="52" id="eNY-eZ-FVN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="fzT-MB-kBE" secondAttribute="trailing" constant="140" id="fHk-eL-gIU"/>
+                            <constraint firstItem="ETl-Ns-ABr" firstAttribute="top" secondItem="KnM-Yi-U6o" secondAttribute="bottom" id="oCS-7U-q7E"/>
+                            <constraint firstItem="wyt-Gt-ZAZ" firstAttribute="top" secondItem="isa-1G-kll" secondAttribute="bottom" constant="10" id="qLD-gT-g89"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="isa-1G-kll" secondAttribute="trailing" constant="-14" id="rWg-vV-zOw"/>
+                            <constraint firstItem="wyt-Gt-ZAZ" firstAttribute="top" secondItem="Qx5-9e-Val" secondAttribute="bottom" constant="80" id="vps-Ag-bL6"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="g_curLab" destination="Qx5-9e-Val" id="Egs-LZ-ZvC"/>
+                        <outlet property="g_loadBar" destination="2rI-S7-Pdt" id="M2f-xD-Mrp"/>
+                        <outlet property="g_progressBar" destination="yDm-eh-y1V" id="e0u-fW-ALV"/>
+                        <outlet property="g_totalLab" destination="Sbw-Ld-twJ" id="cJH-z0-SV6"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYP-aX-oSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1560.8" y="121.88905547226388"/>
+        </scene>
     </scenes>
     <resources>
         <image name="btn_close" width="20" height="20"/>
         <image name="btn_list" width="20" height="20"/>
         <image name="btn_share" width="20" height="20"/>
+        <image name="nowplaying_random" width="30" height="30"/>
+        <image name="player_btn_next_normal" width="64" height="64"/>
+        <image name="player_btn_play_normal" width="64" height="64"/>
+        <image name="player_btn_playlist_highlight" width="50" height="50"/>
+        <image name="player_btn_pre_normal" width="64" height="64"/>
     </resources>
 </document>
