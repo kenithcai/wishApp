@@ -12,9 +12,13 @@ import AVFoundation
 
 class MP3PlayerViewController: BaseViewController {
 
+    
     let AV_STATUS = "status"
     let AV_LOADED = "loadedTimeRanges"
+    let AV_URLStr = "http://blog.fathoo.xyz/music/%E4%B8%83%E7%99%BE%E5%B9%B4%E5%90%8E.mp3"
     
+    @IBOutlet weak var g_musicTitle: UILabel!
+    @IBOutlet weak var g_artworkImg: UIImageView!
     @IBOutlet weak var g_curLab: UILabel!
     @IBOutlet weak var g_totalLab: UILabel!
     @IBOutlet weak var g_loadBar: UIProgressView!
@@ -24,7 +28,8 @@ class MP3PlayerViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.musicInfo(str: AV_URLStr)
         // Do any additional setup after loading the view.
     }
 
@@ -33,7 +38,26 @@ class MP3PlayerViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    
+    func musicInfo(str:String) {
+        let url:NSURL = NSURL(string: str)!
+        let asset = AVURLAsset.init(url: url as URL)
+        for var format in asset.availableMetadataFormats {
+            for var data in asset.metadata(forFormat: format) {
+                if data.commonKey == "title" {
+                    self.g_musicTitle.isHidden = false
+                    self.g_musicTitle.textAlignment = .center
+                    self.g_musicTitle.text = data.value as! String?
+                }
+                
+                if data.commonKey == "artwork" {
+                    let data = data.value
+                    let img = UIImage.init(data:data as! Data)
+                    self.g_artworkImg.image = img
+                }
+            }
+        }
+    }
     /*
     // MARK: - Navigation
 
@@ -50,11 +74,12 @@ class MP3PlayerViewController: BaseViewController {
     }
     @IBAction func clickPlay(_ sender: UIButton) {
         if g_avPlayer == nil {
-            let url:NSURL = NSURL(string: "http://blog.fathoo.xyz/music/%E4%B8%83%E7%99%BE%E5%B9%B4%E5%90%8E.mp3" as String)!
+            let url:NSURL = NSURL(string: AV_URLStr)!
             g_avPlayer = AVPlayer.init(url: url as URL)
             g_avPlayer?.currentItem?.addObserver(self, forKeyPath: AV_STATUS, options: NSKeyValueObservingOptions.new, context: nil)
             g_avPlayer?.currentItem?.addObserver(self, forKeyPath: AV_LOADED, options: NSKeyValueObservingOptions.new, context: nil)
         }
+        
         if g_isPlaying {
             g_avPlayer?.pause()
         }
