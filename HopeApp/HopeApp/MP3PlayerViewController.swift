@@ -42,6 +42,9 @@ class MP3PlayerViewController: BaseViewController {
     func musicInfo(str:String) {
         let url:NSURL = NSURL(string: str)!
         let asset = AVURLAsset.init(url: url as URL)
+        let duration = CMTimeGetSeconds(asset.duration)
+        self.g_totalLab.text = self.convertime(CGFloat(duration))
+        self.g_curLab.text = "00:00"
         for var format in asset.availableMetadataFormats {
             for var data in asset.metadata(forFormat: format) {
                 if data.commonKey == "title" {
@@ -90,12 +93,13 @@ class MP3PlayerViewController: BaseViewController {
                 let current = CMTimeGetSeconds(time)
                 let total = CMTimeGetSeconds((self.g_avPlayer?.currentItem?.duration)!)
                 self.g_progressBar.progress = Float(current / total)
-                self.g_curLab.isHidden = false
                 self.g_curLab.text = self.convertime(CGFloat(current))
             })
         }
         
         g_isPlaying = !g_isPlaying
+        let img = g_isPlaying ? "player_btn_pause_normal" : "player_btn_play_normal"
+        sender.setImage(UIImage.init(named: img), for: .normal)
     }
     @IBAction func clickNext(_ sender: UIButton) {
     }
@@ -122,21 +126,17 @@ class MP3PlayerViewController: BaseViewController {
                     
                     let scale = totalBuffer/duration
                     self.g_loadBar.setProgress(Float(scale), animated: true)
-                    print("toalBuffer ====",totalBuffer)
                     
-                }else if keyPath == AV_STATUS{
-                    // 监听状态改变
-                    if item.status == AVPlayerItemStatus.readyToPlay{
-                        // 只有在这个状态下才能播放
-                        self.g_avPlayer?.play()
-                        let duration = CMTimeGetSeconds(item.duration)
-                        self.g_totalLab.isHidden = false
-                        self.g_totalLab.text = self.convertime(CGFloat(duration))
-//                        print("all time = ",duration,self.convertime(CGFloat(duration)))
-                    }else{
-                        print("加载异常")
-                    }
                 }
+//                else if keyPath == AV_STATUS{
+//                    // 监听状态改变
+//                    if item.status == AVPlayerItemStatus.readyToPlay{
+//                        // 只有在这个状态下才能播放
+//                        self.g_avPlayer?.play()
+//                    }else{
+//                        print("加载异常")
+//                    }
+//                }
     }
     
     func deleteObs(){
