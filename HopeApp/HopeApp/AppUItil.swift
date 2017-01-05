@@ -308,18 +308,23 @@ class AppUtil
     }
     
     // 旋转动画
-    class func rotate(_ view:UIView, _ duration:Float, _ angle:Double)
+    class func rotate(_ view:UIView, _ duration:Float)
     {
-        let anim = CABasicAnimation(keyPath: "transform.rotation")
-        anim.toValue = angle*M_PI
-        anim.duration = CFTimeInterval(duration)
-        anim.repeatCount = MAXFLOAT
-        anim.isRemovedOnCompletion = true
-        view.layer.add(anim, forKey: nil)
-        view.layer.removeAllAnimations()
-        UIView.animate(withDuration: TimeInterval(duration)) {
-            view.transform = view.transform.rotated(by: CGFloat(angle*M_PI))
+        UIView.animate(withDuration: TimeInterval(duration), delay: 0, options: .curveLinear, animations: {
+            view.transform = view.transform.rotated(by: CGFloat(M_PI_2))
+        }) { (finish: Bool) in
+            AppUtil.rotate(view,duration)
         }
+//        let anim = CABasicAnimation(keyPath: "transform.rotation")
+//        anim.toValue = M_PI
+//        anim.duration = 1
+//        anim.repeatCount = MAXFLOAT
+//        anim.isRemovedOnCompletion = true
+//        view.layer.add(anim, forKey: nil)
+//        view.layer.removeAllAnimations()
+//        UIView.animate(withDuration: 0.2) {
+//            view.transform = view.transform.rotated(by: CGFloat(M_PI))
+//        }
     }
     
     // 秒转日期时间字符串

@@ -10,11 +10,12 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class MP3PlayerViewController: BaseViewController {
+class MP3PlayerViewController: BaseViewController,AVAssetResourceLoaderDelegate {
 
     
     let AV_STATUS = "status"
     let AV_LOADED = "loadedTimeRanges"
+    let AV_KEEPUP = "playbackLikelyToKeepUp"
     let AV_URLStr = "http://blog.fathoo.xyz/music/%E4%B8%83%E7%99%BE%E5%B9%B4%E5%90%8E.mp3"
     
     @IBOutlet weak var g_avSlide: UISlider!
@@ -55,7 +56,9 @@ class MP3PlayerViewController: BaseViewController {
         return AVPlayerItem.init(asset: self.avAsset(str))
     }
     func avAsset(_ str:String) -> AVURLAsset {
-        return AVURLAsset.init(url: NSURL(string: str)! as URL)
+        let asset = AVURLAsset.init(url: NSURL(string: str)! as URL)
+//        asset.resourceLoader.setDelegate(self, queue: nil)
+        return asset
     }
     
     func slider()
@@ -120,7 +123,9 @@ class MP3PlayerViewController: BaseViewController {
         }
         else{
             self.playerUrl(AV_URLStr)
-            AppUtil.rotate(g_artworkImg, Float(g_totalTime!/10), g_totalTime!*100)
+            let asset = self.player().currentItem?.asset as! AVURLAsset
+            asset.resourceLoader.setDelegate(self, queue: DispatchQueue.main)
+            AppUtil.rotate(g_artworkImg, 3.0)
         }
         
         g_isPlaying = !g_isPlaying
@@ -168,12 +173,18 @@ class MP3PlayerViewController: BaseViewController {
                         print("加载异常")
                     }
                 }
+                else if keyPath == AV_KEEPUP{
+                    
+                    self.player().play()
+                    
+                }
     }
     
     
     func addObserver() {
         self.player().currentItem?.addObserver(self, forKeyPath: AV_STATUS, options: NSKeyValueObservingOptions.new, context: nil)
         self.player().currentItem?.addObserver(self, forKeyPath: AV_LOADED, options: NSKeyValueObservingOptions.new, context: nil)
+        self.player().currentItem?.addObserver(self, forKeyPath: AV_KEEPUP, options: NSKeyValueObservingOptions.new, context: nil)
         
         NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil, using: {_ in
             print("播放完成")
@@ -193,10 +204,17 @@ class MP3PlayerViewController: BaseViewController {
     func delObserver(){
         g_avPlayer?.currentItem?.removeObserver(self, forKeyPath: AV_STATUS)
         g_avPlayer?.currentItem?.removeObserver(self, forKeyPath: AV_LOADED)
+        g_avPlayer?.currentItem?.removeObserver(self, forKeyPath: AV_KEEPUP)
         
         NotificationCenter.default.removeObserver(NSNotification.Name.AVPlayerItemDidPlayToEndTime)
-//        No
-//        [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
-//        [self.player removeTimeObserver:self.timeObserver];
+    }
+    
+    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
+        print("1111")
+        return true
+    }
+    
+    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, didCancel loadingRequest: AVAssetResourceLoadingRequest) {
+        
     }
 }
