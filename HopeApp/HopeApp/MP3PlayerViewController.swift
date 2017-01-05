@@ -25,11 +25,12 @@ class MP3PlayerViewController: BaseViewController {
     @IBOutlet weak var g_progressBar: UIProgressView!
     var g_avPlayer:AVPlayer? = nil
     var g_isPlaying:Bool = false
+    var g_totalTime:Float64? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.musicInfo(str: AV_URLStr)
+        self.musicInfo(AV_URLStr)
         // Do any additional setup after loading the view.
     }
 
@@ -38,12 +39,35 @@ class MP3PlayerViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func player()-> AVPlayer
+    {
+        if g_avPlayer == nil {
+            g_avPlayer = AVPlayer()
+        }
+        return g_avPlayer!
+    }
     
-    func musicInfo(str:String) {
-        let url:NSURL = NSURL(string: str)!
-        let asset = AVURLAsset.init(url: url as URL)
+    func avItem(_ str:String) -> AVPlayerItem {
+        return AVPlayerItem.init(asset: self.avAsset(str))
+    }
+    func avAsset(_ str:String) -> AVURLAsset {
+        return AVURLAsset.init(url: NSURL(string: str)! as URL)
+    }
+    
+    func playerUrl(_ str:String) {
+        self.delObserver()
+        let item = self.avItem(str)
+        self.player().replaceCurrentItem(with: item)
+        self.addObserver()
+    }
+    
+    func musicInfo(_ str:String) {
+        
+        let asset = self.avAsset(AV_STATUS)
+    
         let duration = CMTimeGetSeconds(asset.duration)
-        self.g_totalLab.text = self.convertime(CGFloat(duration))
+        g_totalTime = duration
+        self.g_totalLab.text = AppUtil.converTime(Float(duration))
         self.g_curLab.text = "00:00"
         for var format in asset.availableMetadataFormats {
             for var data in asset.metadata(forFormat: format) {
@@ -57,44 +81,26 @@ class MP3PlayerViewController: BaseViewController {
                     let data = data.value
                     let img = UIImage.init(data:data as! Data)
                     self.g_artworkImg.image = img
+                    self.g_artworkImg.contentMode = .scaleAspectFill
+                    self.g_artworkImg.layer.masksToBounds = true
+                    self.g_artworkImg.layer.cornerRadius = self.g_artworkImg.bounds.size.height/2
+                    
                 }
             }
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     @IBAction func clickType(_ sender: UIButton) {
     }
     @IBAction func clickPre(_ sender: UIButton) {
     }
     @IBAction func clickPlay(_ sender: UIButton) {
-        if g_avPlayer == nil {
-            let url:NSURL = NSURL(string: AV_URLStr)!
-            g_avPlayer = AVPlayer.init(url: url as URL)
-            g_avPlayer?.currentItem?.addObserver(self, forKeyPath: AV_STATUS, options: NSKeyValueObservingOptions.new, context: nil)
-            g_avPlayer?.currentItem?.addObserver(self, forKeyPath: AV_LOADED, options: NSKeyValueObservingOptions.new, context: nil)
-        }
-        
         if g_isPlaying {
-            g_avPlayer?.pause()
+            self.player().pause()
         }
         else{
-            g_avPlayer?.play()
-            
-            g_avPlayer?.addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: nil, using: {time in
-                let current = CMTimeGetSeconds(time)
-                let total = CMTimeGetSeconds((self.g_avPlayer?.currentItem?.duration)!)
-                self.g_progressBar.progress = Float(current / total)
-                self.g_curLab.text = self.convertime(CGFloat(current))
-            })
+            self.playerUrl(AV_URLStr)
+            AppUtil.rotate(g_artworkImg, Float(g_totalTime!), g_totalTime!*100)
         }
         
         g_isPlaying = !g_isPlaying
@@ -109,8 +115,6 @@ class MP3PlayerViewController: BaseViewController {
         if (g_closeFunc != nil) {
             g_closeFunc!()
         }
-        //        self.modalTransitionStyle = .crossDissolve
-        //        UIView.setAnimationTransition
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -127,46 +131,51 @@ class MP3PlayerViewController: BaseViewController {
                     let scale = totalBuffer/duration
                     self.g_loadBar.setProgress(Float(scale), animated: true)
                     
-                }
-//                else if keyPath == AV_STATUS{
-//                    // 监听状态改变
-//                    if item.status == AVPlayerItemStatus.readyToPlay{
-//                        // 只有在这个状态下才能播放
-//                        self.g_avPlayer?.play()
-//                    }else{
-//                        print("加载异常")
+                    
+//                    let cur = self.g_avPlayer?.currentTime().value/self.g_avPlayer?.currentTime().timescale
+                    print("totalbuffer === ",totalBuffer)
+//                    if totalBuffer > 5
+//                    {
+                        self.player().play()
 //                    }
-//                }
+                }
+                else if keyPath == AV_STATUS{
+                    // 监听状态改变
+                    if item.status == AVPlayerItemStatus.readyToPlay{
+                        // 只有在这个状态下才能播放
+                        self.player().play()
+                    }else{
+                        print("加载异常")
+                    }
+                }
     }
     
-    func deleteObs(){
+    
+    func addObserver() {
+        self.player().currentItem?.addObserver(self, forKeyPath: AV_STATUS, options: NSKeyValueObservingOptions.new, context: nil)
+        self.player().currentItem?.addObserver(self, forKeyPath: AV_LOADED, options: NSKeyValueObservingOptions.new, context: nil)
+        
+        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil, using: {_ in
+            print("播放完成")
+        })
+        // 进度条
+        self.player().addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: nil, using: {time in
+            let current = CMTimeGetSeconds(time)
+            self.g_progressBar.progress = Float(current / self.g_totalTime!)
+            self.g_curLab.text = AppUtil.converTime(Float(current))
+            if Float(current / self.g_totalTime!) >= 1{
+                NotificationCenter.default.post(name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+            }
+        })
+    }
+    
+    func delObserver(){
         g_avPlayer?.currentItem?.removeObserver(self, forKeyPath: AV_STATUS)
         g_avPlayer?.currentItem?.removeObserver(self, forKeyPath: AV_LOADED)
+        
+        NotificationCenter.default.removeObserver(NSNotification.Name.AVPlayerItemDidPlayToEndTime)
+//        No
+//        [[NSNotificationCenter defaultCenter] removeObserver:self name:AVPlayerItemDidPlayToEndTimeNotification object:nil];
+//        [self.player removeTimeObserver:self.timeObserver];
     }
-    
-    func convertime(_ second:CGFloat) -> String {
-        let time = TimeInterval(second)
-        let date = NSDate(timeIntervalSince1970: time)
-        let dfm = DateFormatter()
-        if (second/3600 >= 1) {
-            dfm.dateFormat = "HH:mm:ss"
-        } else {
-            dfm.dateFormat = "mm:ss"
-        }
-    
-        let timeStr = dfm.string(from: date as Date)
-        return timeStr
-//        dformatter.string(from: date3 as Date)
-    }
-//    - (NSString *)convertTime:(CGFloat)second{
-//    NSDate *d = [NSDate dateWithTimeIntervalSince1970:second];
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    if (second/3600 >= 1) {
-//    [formatter setDateFormat:@"HH:mm:ss"];
-//    } else {
-//    [formatter setDateFormat:@"mm:ss"];
-//    }
-//    NSString *showtimeNew = [formatter stringFromDate:d];
-//    return showtimeNew;
-//    }
 }

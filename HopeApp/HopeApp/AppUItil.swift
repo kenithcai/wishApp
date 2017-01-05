@@ -306,5 +306,35 @@ class AppUtil
             target.presentedViewController?.dismiss(animated: false, completion: nil)
         }
     }
+    
+    // 旋转动画
+    class func rotate(_ view:UIView, _ duration:Float, _ angle:Double)
+    {
+        let anim = CABasicAnimation(keyPath: "transform.rotation")
+        anim.toValue = angle*M_PI
+        anim.duration = CFTimeInterval(duration)
+        anim.repeatCount = MAXFLOAT
+        anim.isRemovedOnCompletion = true
+        view.layer.add(anim, forKey: nil)
+        view.layer.removeAllAnimations()
+        UIView.animate(withDuration: TimeInterval(duration)) {
+            view.transform = view.transform.rotated(by: CGFloat(angle*M_PI))
+        }
+    }
+    
+    // 秒转日期时间字符串
+    class func converTime(_ second:Float) -> String {
+        let time = TimeInterval(second)
+        let date = NSDate(timeIntervalSince1970: time)
+        let dfm = DateFormatter()
+        if (second/3600 >= 1) {
+            dfm.dateFormat = "HH:mm:ss"
+        } else {
+            dfm.dateFormat = "mm:ss"
+        }
+        
+        let timeStr = dfm.string(from: date as Date)
+        return timeStr
+    }
 }
 

@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "player_mask.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "player_btn_share_disable@2x.png",
       "scale" : "2x"
     },
     {
