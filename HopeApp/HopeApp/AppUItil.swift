@@ -161,7 +161,7 @@ class AppUtil
     // 天气情况
     class func weatherToCN(_ weather:String)->String
     {
-        var dic:Dictionary<String,String>=["Wind":"阵风","Clouds":"多云","Rain":"有雨","Snow":"下雪", "Haze":"阴霾", "Clear":"晴天"];
+        var dic:Dictionary<String,String>=["Wind":"阵风","Clouds":"多云","Rain":"有雨","Snow":"下雪", "Haze":"阴霾", "Clear":"晴天", "Mist" : "雾"];
         let info = dic[weather]
         return (info != nil) ? info! : weather
     }

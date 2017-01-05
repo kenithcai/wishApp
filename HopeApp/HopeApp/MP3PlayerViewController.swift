@@ -17,12 +17,13 @@ class MP3PlayerViewController: BaseViewController {
     let AV_LOADED = "loadedTimeRanges"
     let AV_URLStr = "http://blog.fathoo.xyz/music/%E4%B8%83%E7%99%BE%E5%B9%B4%E5%90%8E.mp3"
     
+    @IBOutlet weak var g_avSlide: UISlider!
     @IBOutlet weak var g_musicTitle: UILabel!
     @IBOutlet weak var g_artworkImg: UIImageView!
     @IBOutlet weak var g_curLab: UILabel!
     @IBOutlet weak var g_totalLab: UILabel!
     @IBOutlet weak var g_loadBar: UIProgressView!
-    @IBOutlet weak var g_progressBar: UIProgressView!
+//    @IBOutlet weak var g_progressBar: UIProgressView!
     var g_avPlayer:AVPlayer? = nil
     var g_isPlaying:Bool = false
     var g_totalTime:Float64? = nil
@@ -30,7 +31,10 @@ class MP3PlayerViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.musicInfo(AV_URLStr)
+        
+        self.slider()
         // Do any additional setup after loading the view.
     }
 
@@ -54,6 +58,22 @@ class MP3PlayerViewController: BaseViewController {
         return AVURLAsset.init(url: NSURL(string: str)! as URL)
     }
     
+    func slider()
+    {
+        g_avSlide.isContinuous = false
+        g_avSlide.addTarget(self, action: #selector(sliderValueChange(_:)), for: UIControlEvents.valueChanged)
+    }
+    func sliderValueChange(_ slider:UISlider){
+        print(slider.value)
+        
+        
+        let toTime = CMTimeMake(Int64(Float(g_totalTime!)*slider.value) , 1)
+        self.player().seek(to: toTime, completionHandler: {_ in
+            self.player().play()
+        })
+    }
+    
+    
     func playerUrl(_ str:String) {
         self.delObserver()
         let item = self.avItem(str)
@@ -63,7 +83,7 @@ class MP3PlayerViewController: BaseViewController {
     
     func musicInfo(_ str:String) {
         
-        let asset = self.avAsset(AV_STATUS)
+        let asset = self.avAsset(str)
     
         let duration = CMTimeGetSeconds(asset.duration)
         g_totalTime = duration
@@ -100,7 +120,7 @@ class MP3PlayerViewController: BaseViewController {
         }
         else{
             self.playerUrl(AV_URLStr)
-            AppUtil.rotate(g_artworkImg, Float(g_totalTime!), g_totalTime!*100)
+            AppUtil.rotate(g_artworkImg, Float(g_totalTime!/10), g_totalTime!*100)
         }
         
         g_isPlaying = !g_isPlaying
@@ -136,7 +156,7 @@ class MP3PlayerViewController: BaseViewController {
                     print("totalbuffer === ",totalBuffer)
 //                    if totalBuffer > 5
 //                    {
-                        self.player().play()
+//                        self.player().play()
 //                    }
                 }
                 else if keyPath == AV_STATUS{
@@ -161,8 +181,9 @@ class MP3PlayerViewController: BaseViewController {
         // 进度条
         self.player().addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: nil, using: {time in
             let current = CMTimeGetSeconds(time)
-            self.g_progressBar.progress = Float(current / self.g_totalTime!)
+//            self.g_progressBar.progress = Float(current / self.g_totalTime!)
             self.g_curLab.text = AppUtil.converTime(Float(current))
+            self.g_avSlide.setValue(Float(current / self.g_totalTime!), animated: true)
             if Float(current / self.g_totalTime!) >= 1{
                 NotificationCenter.default.post(name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
             }

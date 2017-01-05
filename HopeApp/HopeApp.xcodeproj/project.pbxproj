@@ -33,8 +33,6 @@
 		D483E68F1DE0314E00093C09 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D483E68E1DE0314E00093C09 /* CoreTelephony.framework */; };
 		D483E6911DE0315700093C09 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D483E6901DE0315700093C09 /* CFNetwork.framework */; };
 		D4A353B51E1D3C2400EA9B1C /* AVResMgr.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A353B41E1D3C2400EA9B1C /* AVResMgr.m */; };
-		D4A353BA1E1D3E1200EA9B1C /* SURequestTask.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A353B71E1D3E1200EA9B1C /* SURequestTask.m */; };
-		D4A353BB1E1D3E1200EA9B1C /* SUResourceLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D4A353B91E1D3E1200EA9B1C /* SUResourceLoader.m */; };
 		D4CC592B1DD062D00055C317 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CC592A1DD062D00055C317 /* SettingViewController.swift */; };
 		D4CC592D1DD062DE0055C317 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CC592C1DD062DE0055C317 /* ShareViewController.swift */; };
 		D4CCAD951DDDC90C004CDED0 /* AppUItil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */; };
@@ -107,10 +105,6 @@
 		D483E6921DE032FA00093C09 /* WeixinSdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeixinSdk.h; sourceTree = "<group>"; };
 		D4A353B31E1D3C2400EA9B1C /* AVResMgr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AVResMgr.h; sourceTree = "<group>"; };
 		D4A353B41E1D3C2400EA9B1C /* AVResMgr.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AVResMgr.m; sourceTree = "<group>"; };
-		D4A353B61E1D3E1200EA9B1C /* SURequestTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SURequestTask.h; sourceTree = "<group>"; };
-		D4A353B71E1D3E1200EA9B1C /* SURequestTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SURequestTask.m; sourceTree = "<group>"; };
-		D4A353B81E1D3E1200EA9B1C /* SUResourceLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SUResourceLoader.h; sourceTree = "<group>"; };
-		D4A353B91E1D3E1200EA9B1C /* SUResourceLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SUResourceLoader.m; sourceTree = "<group>"; };
 		D4CC592A1DD062D00055C317 /* SettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		D4CC592C1DD062DE0055C317 /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppUItil.swift; sourceTree = "<group>"; };
@@ -230,10 +224,6 @@
 				D40258471E1B436900D129AF /* MP3PlayerViewController.swift */,
 				D4A353B31E1D3C2400EA9B1C /* AVResMgr.h */,
 				D4A353B41E1D3C2400EA9B1C /* AVResMgr.m */,
-				D4A353B61E1D3E1200EA9B1C /* SURequestTask.h */,
-				D4A353B71E1D3E1200EA9B1C /* SURequestTask.m */,
-				D4A353B81E1D3E1200EA9B1C /* SUResourceLoader.h */,
-				D4A353B91E1D3E1200EA9B1C /* SUResourceLoader.m */,
 				D483E6231DDEA76100093C09 /* BaseViewController.swift */,
 				D483E6921DE032FA00093C09 /* WeixinSdk.h */,
 				D483E67A1DE00A6400093C09 /* WeixinSdk.m */,
@@ -549,9 +539,7 @@
 				D483E6241DDEA76100093C09 /* BaseViewController.swift in Sources */,
 				D4FA976E1E09545D00FB8F0A /* MyLabel.m in Sources */,
 				D40258481E1B436900D129AF /* MP3PlayerViewController.swift in Sources */,
-				D4A353BA1E1D3E1200EA9B1C /* SURequestTask.m in Sources */,
 				D4CCAD951DDDC90C004CDED0 /* AppUItil.swift in Sources */,
-				D4A353BB1E1D3E1200EA9B1C /* SUResourceLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
