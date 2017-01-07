@@ -11,11 +11,25 @@
 		7742BAE29093FDD33B181EC2 /* Pods_HopeApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 838B5F4006166D4DCF3C1E44 /* Pods_HopeApp.framework */; };
 		8E34775ED7862048AF3A8FFE /* Pods_HopeAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64E9DD43E7EF11309F655368 /* Pods_HopeAppUITests.framework */; };
 		D40258481E1B436900D129AF /* MP3PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40258471E1B436900D129AF /* MP3PlayerViewController.swift */; };
+		D405709C1E1E564C00FD1BDD /* customEQ.plist in Resources */ = {isa = PBXBuildFile; fileRef = D40570691E1E564C00FD1BDD /* customEQ.plist */; };
+		D405709D1E1E564C00FD1BDD /* ipodEQ.plist in Resources */ = {isa = PBXBuildFile; fileRef = D405706A1E1E564C00FD1BDD /* ipodEQ.plist */; };
+		D405709E1E1E564C00FD1BDD /* CustomEQ.m in Sources */ = {isa = PBXBuildFile; fileRef = D405706D1E1E564C00FD1BDD /* CustomEQ.m */; };
+		D405709F1E1E564C00FD1BDD /* IpodEQ.m in Sources */ = {isa = PBXBuildFile; fileRef = D405706F1E1E564C00FD1BDD /* IpodEQ.m */; };
+		D40570A01E1E564C00FD1BDD /* AQConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = D40570721E1E564C00FD1BDD /* AQConverter.mm */; };
+		D40570A11E1E564C00FD1BDD /* AQDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = D40570741E1E564C00FD1BDD /* AQDownloader.m */; };
+		D40570A21E1E564C00FD1BDD /* AQGraph.mm in Sources */ = {isa = PBXBuildFile; fileRef = D40570761E1E564C00FD1BDD /* AQGraph.mm */; };
+		D40570A31E1E564C00FD1BDD /* AQPlayer.mm in Sources */ = {isa = PBXBuildFile; fileRef = D40570781E1E564C00FD1BDD /* AQPlayer.mm */; };
+		D40570A41E1E564C00FD1BDD /* AQRing.m in Sources */ = {isa = PBXBuildFile; fileRef = D405707A1E1E564C00FD1BDD /* AQRing.m */; };
+		D40570A51E1E564C00FD1BDD /* CAComponentDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D405707D1E1E564C00FD1BDD /* CAComponentDescription.cpp */; };
+		D40570A61E1E564C00FD1BDD /* CAStreamBasicDescription.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D40570821E1E564C00FD1BDD /* CAStreamBasicDescription.cpp */; };
+		D40570A71E1E564C00FD1BDD /* CAXException.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D40570841E1E564C00FD1BDD /* CAXException.cpp */; };
+		D40570A81E1E564C00FD1BDD /* songs.plist in Resources */ = {isa = PBXBuildFile; fileRef = D40570861E1E564C00FD1BDD /* songs.plist */; };
+		D40570A91E1E564C00FD1BDD /* IpodEQViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D40570891E1E564C00FD1BDD /* IpodEQViewCell.m */; };
+		D40570AF1E1E564C00FD1BDD /* MyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = D40570971E1E564C00FD1BDD /* MyTool.m */; };
 		D40C72CC1DF95E1B00CA5E0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D40C72CB1DF95E1B00CA5E0D /* Assets.xcassets */; };
 		D41D81BA1DE43B5000D9323B /* CMUUIDManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D81B91DE43B5000D9323B /* CMUUIDManager.m */; };
 		D41D81BE1DE43BAF00D9323B /* CMKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = D41D81BD1DE43BAF00D9323B /* CMKeyChain.m */; };
 		D41D81C01DE4417800D9323B /* keyUid.plist in Resources */ = {isa = PBXBuildFile; fileRef = D41D81BF1DE4417800D9323B /* keyUid.plist */; };
-		D41D81C21DE446D000D9323B /* preset_bg_7.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D41D81C11DE446D000D9323B /* preset_bg_7.jpg */; };
 		D41FCC1F1DCDB993001F6C94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41FCC1E1DCDB993001F6C94 /* AppDelegate.swift */; };
 		D41FCC211DCDB993001F6C94 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D41FCC201DCDB993001F6C94 /* ViewController.swift */; };
 		D41FCC241DCDB993001F6C94 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D41FCC221DCDB993001F6C94 /* Main.storyboard */; };
@@ -71,13 +85,43 @@
 		96C95A4B6BC2F4B4DDFD9300 /* Pods-HopeAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HopeAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HopeAppUITests/Pods-HopeAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AAD0A91DF419D0A0542C3082 /* Pods_HopeAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HopeAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D40258471E1B436900D129AF /* MP3PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MP3PlayerViewController.swift; sourceTree = "<group>"; };
+		D40570691E1E564C00FD1BDD /* customEQ.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = customEQ.plist; sourceTree = "<group>"; };
+		D405706A1E1E564C00FD1BDD /* ipodEQ.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ipodEQ.plist; sourceTree = "<group>"; };
+		D405706C1E1E564C00FD1BDD /* CustomEQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomEQ.h; sourceTree = "<group>"; };
+		D405706D1E1E564C00FD1BDD /* CustomEQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomEQ.m; sourceTree = "<group>"; };
+		D405706E1E1E564C00FD1BDD /* IpodEQ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpodEQ.h; sourceTree = "<group>"; };
+		D405706F1E1E564C00FD1BDD /* IpodEQ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IpodEQ.m; sourceTree = "<group>"; };
+		D40570711E1E564C00FD1BDD /* AQConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQConverter.h; sourceTree = "<group>"; };
+		D40570721E1E564C00FD1BDD /* AQConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AQConverter.mm; sourceTree = "<group>"; };
+		D40570731E1E564C00FD1BDD /* AQDownloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQDownloader.h; sourceTree = "<group>"; };
+		D40570741E1E564C00FD1BDD /* AQDownloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQDownloader.m; sourceTree = "<group>"; };
+		D40570751E1E564C00FD1BDD /* AQGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQGraph.h; sourceTree = "<group>"; };
+		D40570761E1E564C00FD1BDD /* AQGraph.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AQGraph.mm; sourceTree = "<group>"; };
+		D40570771E1E564C00FD1BDD /* AQPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQPlayer.h; sourceTree = "<group>"; };
+		D40570781E1E564C00FD1BDD /* AQPlayer.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AQPlayer.mm; sourceTree = "<group>"; };
+		D40570791E1E564C00FD1BDD /* AQRing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AQRing.h; sourceTree = "<group>"; };
+		D405707A1E1E564C00FD1BDD /* AQRing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AQRing.m; sourceTree = "<group>"; };
+		D405707C1E1E564C00FD1BDD /* CACFDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CACFDictionary.h; sourceTree = "<group>"; };
+		D405707D1E1E564C00FD1BDD /* CAComponentDescription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAComponentDescription.cpp; sourceTree = "<group>"; };
+		D405707E1E1E564C00FD1BDD /* CAComponentDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAComponentDescription.h; sourceTree = "<group>"; };
+		D405707F1E1E564C00FD1BDD /* CADebugMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugMacros.h; sourceTree = "<group>"; };
+		D40570801E1E564C00FD1BDD /* CADebugPrintf.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CADebugPrintf.h; sourceTree = "<group>"; };
+		D40570811E1E564C00FD1BDD /* CAMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAMath.h; sourceTree = "<group>"; };
+		D40570821E1E564C00FD1BDD /* CAStreamBasicDescription.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAStreamBasicDescription.cpp; sourceTree = "<group>"; };
+		D40570831E1E564C00FD1BDD /* CAStreamBasicDescription.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAStreamBasicDescription.h; sourceTree = "<group>"; };
+		D40570841E1E564C00FD1BDD /* CAXException.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CAXException.cpp; sourceTree = "<group>"; };
+		D40570851E1E564C00FD1BDD /* CAXException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CAXException.h; sourceTree = "<group>"; };
+		D40570861E1E564C00FD1BDD /* songs.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = songs.plist; sourceTree = "<group>"; };
+		D40570881E1E564C00FD1BDD /* IpodEQViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IpodEQViewCell.h; sourceTree = "<group>"; };
+		D40570891E1E564C00FD1BDD /* IpodEQViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IpodEQViewCell.m; sourceTree = "<group>"; };
+		D40570961E1E564C00FD1BDD /* MyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTool.h; sourceTree = "<group>"; };
+		D40570971E1E564C00FD1BDD /* MyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTool.m; sourceTree = "<group>"; };
 		D40C72CB1DF95E1B00CA5E0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D41D81B91DE43B5000D9323B /* CMUUIDManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMUUIDManager.m; sourceTree = "<group>"; };
 		D41D81BB1DE43B5A00D9323B /* CMUUIDManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMUUIDManager.h; sourceTree = "<group>"; };
 		D41D81BC1DE43BA400D9323B /* CMKeyChain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CMKeyChain.h; sourceTree = "<group>"; };
 		D41D81BD1DE43BAF00D9323B /* CMKeyChain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CMKeyChain.m; sourceTree = "<group>"; };
 		D41D81BF1DE4417800D9323B /* keyUid.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = keyUid.plist; sourceTree = "<group>"; };
-		D41D81C11DE446D000D9323B /* preset_bg_7.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = preset_bg_7.jpg; sourceTree = "<group>"; };
 		D41FCC1B1DCDB993001F6C94 /* HopeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HopeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41FCC1E1DCDB993001F6C94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D41FCC201DCDB993001F6C94 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +230,92 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D405705E1E1E564C00FD1BDD /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				D405705F1E1E564C00FD1BDD /* audio */,
+				D40570951E1E564C00FD1BDD /* tools */,
+			);
+			path = audio;
+			sourceTree = "<group>";
+		};
+		D405705F1E1E564C00FD1BDD /* audio */ = {
+			isa = PBXGroup;
+			children = (
+				D40570691E1E564C00FD1BDD /* customEQ.plist */,
+				D405706A1E1E564C00FD1BDD /* ipodEQ.plist */,
+				D405706B1E1E564C00FD1BDD /* models */,
+				D40570701E1E564C00FD1BDD /* player */,
+				D405707B1E1E564C00FD1BDD /* publicUtility */,
+				D40570861E1E564C00FD1BDD /* songs.plist */,
+				D40570871E1E564C00FD1BDD /* views */,
+			);
+			path = audio;
+			sourceTree = "<group>";
+		};
+		D405706B1E1E564C00FD1BDD /* models */ = {
+			isa = PBXGroup;
+			children = (
+				D405706C1E1E564C00FD1BDD /* CustomEQ.h */,
+				D405706D1E1E564C00FD1BDD /* CustomEQ.m */,
+				D405706E1E1E564C00FD1BDD /* IpodEQ.h */,
+				D405706F1E1E564C00FD1BDD /* IpodEQ.m */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		D40570701E1E564C00FD1BDD /* player */ = {
+			isa = PBXGroup;
+			children = (
+				D40570711E1E564C00FD1BDD /* AQConverter.h */,
+				D40570721E1E564C00FD1BDD /* AQConverter.mm */,
+				D40570731E1E564C00FD1BDD /* AQDownloader.h */,
+				D40570741E1E564C00FD1BDD /* AQDownloader.m */,
+				D40570751E1E564C00FD1BDD /* AQGraph.h */,
+				D40570761E1E564C00FD1BDD /* AQGraph.mm */,
+				D40570771E1E564C00FD1BDD /* AQPlayer.h */,
+				D40570781E1E564C00FD1BDD /* AQPlayer.mm */,
+				D40570791E1E564C00FD1BDD /* AQRing.h */,
+				D405707A1E1E564C00FD1BDD /* AQRing.m */,
+			);
+			path = player;
+			sourceTree = "<group>";
+		};
+		D405707B1E1E564C00FD1BDD /* publicUtility */ = {
+			isa = PBXGroup;
+			children = (
+				D405707C1E1E564C00FD1BDD /* CACFDictionary.h */,
+				D405707D1E1E564C00FD1BDD /* CAComponentDescription.cpp */,
+				D405707E1E1E564C00FD1BDD /* CAComponentDescription.h */,
+				D405707F1E1E564C00FD1BDD /* CADebugMacros.h */,
+				D40570801E1E564C00FD1BDD /* CADebugPrintf.h */,
+				D40570811E1E564C00FD1BDD /* CAMath.h */,
+				D40570821E1E564C00FD1BDD /* CAStreamBasicDescription.cpp */,
+				D40570831E1E564C00FD1BDD /* CAStreamBasicDescription.h */,
+				D40570841E1E564C00FD1BDD /* CAXException.cpp */,
+				D40570851E1E564C00FD1BDD /* CAXException.h */,
+			);
+			path = publicUtility;
+			sourceTree = "<group>";
+		};
+		D40570871E1E564C00FD1BDD /* views */ = {
+			isa = PBXGroup;
+			children = (
+				D40570881E1E564C00FD1BDD /* IpodEQViewCell.h */,
+				D40570891E1E564C00FD1BDD /* IpodEQViewCell.m */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		D40570951E1E564C00FD1BDD /* tools */ = {
+			isa = PBXGroup;
+			children = (
+				D40570961E1E564C00FD1BDD /* MyTool.h */,
+				D40570971E1E564C00FD1BDD /* MyTool.m */,
+			);
+			path = tools;
+			sourceTree = "<group>";
+		};
 		D41FCC121DCDB993001F6C94 = {
 			isa = PBXGroup;
 			children = (
@@ -214,7 +344,6 @@
 				D41FCC201DCDB993001F6C94 /* ViewController.swift */,
 				D41FCC221DCDB993001F6C94 /* Main.storyboard */,
 				D41FCC2A1DCDB993001F6C94 /* LaunchScreen.storyboard */,
-				D41D81C11DE446D000D9323B /* preset_bg_7.jpg */,
 				D40C72CB1DF95E1B00CA5E0D /* Assets.xcassets */,
 				D41FCC2D1DCDB993001F6C94 /* Info.plist */,
 				D41D81BF1DE4417800D9323B /* keyUid.plist */,
@@ -237,6 +366,7 @@
 				D4CCAD941DDDC90C004CDED0 /* AppUItil.swift */,
 				D4FA976C1E09545C00FB8F0A /* MyLabel.h */,
 				D4FA976D1E09545D00FB8F0A /* MyLabel.m */,
+				D405705E1E1E564C00FD1BDD /* audio */,
 			);
 			path = HopeApp;
 			sourceTree = "<group>";
@@ -372,9 +502,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D405709D1E1E564C00FD1BDD /* ipodEQ.plist in Resources */,
 				D41D81C01DE4417800D9323B /* keyUid.plist in Resources */,
 				D41FCC2C1DCDB993001F6C94 /* LaunchScreen.storyboard in Resources */,
-				D41D81C21DE446D000D9323B /* preset_bg_7.jpg in Resources */,
+				D40570A81E1E564C00FD1BDD /* songs.plist in Resources */,
+				D405709C1E1E564C00FD1BDD /* customEQ.plist in Resources */,
 				D483E6831DE0306D00093C09 /* README.txt in Resources */,
 				D40C72CC1DF95E1B00CA5E0D /* Assets.xcassets in Resources */,
 				D41FCC241DCDB993001F6C94 /* Main.storyboard in Resources */,
@@ -528,18 +660,30 @@
 				D41D81BA1DE43B5000D9323B /* CMUUIDManager.m in Sources */,
 				D41FCC211DCDB993001F6C94 /* ViewController.swift in Sources */,
 				D4FC19781DEE877C0064CFE0 /* LocationMgr.swift in Sources */,
+				D40570A51E1E564C00FD1BDD /* CAComponentDescription.cpp in Sources */,
 				D41FCC271DCDB993001F6C94 /* HopeApp.xcdatamodeld in Sources */,
 				D4A353B51E1D3C2400EA9B1C /* AVResMgr.m in Sources */,
 				D41D81BE1DE43BAF00D9323B /* CMKeyChain.m in Sources */,
+				D40570A71E1E564C00FD1BDD /* CAXException.cpp in Sources */,
+				D40570A01E1E564C00FD1BDD /* AQConverter.mm in Sources */,
 				D4CC592D1DD062DE0055C317 /* ShareViewController.swift in Sources */,
 				D4FC19721DEE6A3A0064CFE0 /* WeatherMgr.swift in Sources */,
 				D41FCC1F1DCDB993001F6C94 /* AppDelegate.swift in Sources */,
 				D483E67B1DE00A6400093C09 /* WeixinSdk.m in Sources */,
 				D4CC592B1DD062D00055C317 /* SettingViewController.swift in Sources */,
+				D405709E1E1E564C00FD1BDD /* CustomEQ.m in Sources */,
 				D483E6241DDEA76100093C09 /* BaseViewController.swift in Sources */,
 				D4FA976E1E09545D00FB8F0A /* MyLabel.m in Sources */,
+				D405709F1E1E564C00FD1BDD /* IpodEQ.m in Sources */,
+				D40570A31E1E564C00FD1BDD /* AQPlayer.mm in Sources */,
+				D40570A11E1E564C00FD1BDD /* AQDownloader.m in Sources */,
+				D40570A41E1E564C00FD1BDD /* AQRing.m in Sources */,
 				D40258481E1B436900D129AF /* MP3PlayerViewController.swift in Sources */,
 				D4CCAD951DDDC90C004CDED0 /* AppUItil.swift in Sources */,
+				D40570A91E1E564C00FD1BDD /* IpodEQViewCell.m in Sources */,
+				D40570A21E1E564C00FD1BDD /* AQGraph.mm in Sources */,
+				D40570A61E1E564C00FD1BDD /* CAStreamBasicDescription.cpp in Sources */,
+				D40570AF1E1E564C00FD1BDD /* MyTool.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
