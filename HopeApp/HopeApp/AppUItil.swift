@@ -310,20 +310,16 @@ class AppUtil
     // 旋转动画
     class func rotate(_ view:UIView, _ duration:Float)
     {
-        UIView.animate(withDuration: TimeInterval(duration), delay: 0, options: .curveLinear, animations: {
-            view.transform = view.transform.rotated(by: CGFloat(M_PI_2))
-        }) { (finish: Bool) in
-            AppUtil.rotate(view,duration)
-        }
-//        let anim = CABasicAnimation(keyPath: "transform.rotation")
-//        anim.toValue = M_PI
-//        anim.duration = 1
-//        anim.repeatCount = MAXFLOAT
-//        anim.isRemovedOnCompletion = true
-//        view.layer.add(anim, forKey: nil)
-//        view.layer.removeAllAnimations()
-//        UIView.animate(withDuration: 0.2) {
-//            view.transform = view.transform.rotated(by: CGFloat(M_PI))
+        let ani = CABasicAnimation(keyPath: "transform.rotation")
+        ani.toValue = M_PI * 2
+        ani.duration = CFTimeInterval(duration)
+        ani.repeatCount = MAXFLOAT
+        
+        view.layer.add(ani, forKey: "Rotation")
+//        UIView.animate(withDuration: TimeInterval(duration), delay: 0, options: .curveLinear, animations: {
+//            view.transform = view.transform.rotated(by: CGFloat(M_PI_2))
+//        }) { (finish: Bool) in
+//            AppUtil.rotate(view,duration)
 //        }
     }
     

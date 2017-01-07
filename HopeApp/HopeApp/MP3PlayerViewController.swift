@@ -10,7 +10,15 @@ import UIKit
 import AVKit
 import AVFoundation
 
-class MP3PlayerViewController: BaseViewController,AVAssetResourceLoaderDelegate {
+public enum PlayState : Int {
+    case stop
+    
+    case pause
+    
+    case playing
+}
+
+class MP3PlayerViewController: BaseViewController,AQPlayerDelegate {
 
     
     let AV_STATUS = "status"
@@ -24,10 +32,13 @@ class MP3PlayerViewController: BaseViewController,AVAssetResourceLoaderDelegate 
     @IBOutlet weak var g_curLab: UILabel!
     @IBOutlet weak var g_totalLab: UILabel!
     @IBOutlet weak var g_loadBar: UIProgressView!
-//    @IBOutlet weak var g_progressBar: UIProgressView!
-    var g_avPlayer:AVPlayer? = nil
-    var g_isPlaying:Bool = false
-    var g_totalTime:Float64? = nil
+
+    var g_totalTime:Float = 0.0
+    let g_AVplayer = AQPlayer.shared()!
+    var g_AVstate:PlayState = .stop
+    var g_AVtimeStop:Bool = true
+    var g_AVtimer:Timer? = nil
+    var g_AVcurTime:Float = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +47,9 @@ class MP3PlayerViewController: BaseViewController,AVAssetResourceLoaderDelegate 
         self.musicInfo(AV_URLStr)
         
         self.slider()
+        
+        g_AVplayer.delegate = self
+        
         // Do any additional setup after loading the view.
     }
 
@@ -44,21 +58,8 @@ class MP3PlayerViewController: BaseViewController,AVAssetResourceLoaderDelegate 
         // Dispose of any resources that can be recreated.
     }
     
-    func player()-> AVPlayer
-    {
-        if g_avPlayer == nil {
-            g_avPlayer = AVPlayer()
-        }
-        return g_avPlayer!
-    }
-    
-    func avItem(_ str:String) -> AVPlayerItem {
-        return AVPlayerItem.init(asset: self.avAsset(str))
-    }
     func avAsset(_ str:String) -> AVURLAsset {
-        let asset = AVURLAsset.init(url: NSURL(string: str)! as URL)
-//        asset.resourceLoader.setDelegate(self, queue: nil)
-        return asset
+        return AVURLAsset.init(url: NSURL(string: str)! as URL)
     }
     
     func slider()
@@ -67,21 +68,23 @@ class MP3PlayerViewController: BaseViewController,AVAssetResourceLoaderDelegate 
         g_avSlide.addTarget(self, action: #selector(sliderValueChange(_:)), for: UIControlEvents.valueChanged)
     }
     func sliderValueChange(_ slider:UISlider){
-        print(slider.value)
-        
-        
-        let toTime = CMTimeMake(Int64(Float(g_totalTime!)*slider.value) , 1)
-        self.player().seek(to: toTime, completionHandler: {_ in
-            self.player().play()
-        })
+        let toTime = CMTimeMake(Int64(Float(g_totalTime)*slider.value) , 1)
+        self.g_AVcurTime = Float(toTime.value)
+        self.g_AVplayer.seek(TimeInterval(self.g_AVcurTime))
     }
     
     
-    func playerUrl(_ str:String) {
+    func playUrl(_ str:String) {
         self.delObserver()
-        let item = self.avItem(str)
-        self.player().replaceCurrentItem(with: item)
+        g_AVplayer.play(AV_URLStr)
         self.addObserver()
+    }
+    
+    func resume() {
+        g_AVplayer.play()
+    }
+    func playNext() {
+        
     }
     
     func musicInfo(_ str:String) {
@@ -89,7 +92,7 @@ class MP3PlayerViewController: BaseViewController,AVAssetResourceLoaderDelegate 
         let asset = self.avAsset(str)
     
         let duration = CMTimeGetSeconds(asset.duration)
-        g_totalTime = duration
+        g_totalTime = Float(duration)
         self.g_totalLab.text = AppUtil.converTime(Float(duration))
         self.g_curLab.text = "00:00"
         for var format in asset.availableMetadataFormats {
@@ -118,18 +121,23 @@ class MP3PlayerViewController: BaseViewController,AVAssetResourceLoaderDelegate 
     @IBAction func clickPre(_ sender: UIButton) {
     }
     @IBAction func clickPlay(_ sender: UIButton) {
-        if g_isPlaying {
-            self.player().pause()
+        if self.g_AVstate == .stop {
+            self.g_AVstate = .playing
+            self.playUrl(AV_URLStr)
+            AppUtil.rotate(g_artworkImg, 6.0)
+        }else if self.g_AVstate == .pause {
+            self.g_AVstate = .playing
+            self.resume()
+            AppUtil.rotate(g_artworkImg, 6.0)
         }
         else{
-            self.playerUrl(AV_URLStr)
-            let asset = self.player().currentItem?.asset as! AVURLAsset
-            asset.resourceLoader.setDelegate(self, queue: DispatchQueue.main)
-            AppUtil.rotate(g_artworkImg, 3.0)
+            self.g_AVstate = .pause
+            self.g_AVplayer.stop()
+//            g_artworkImg.layer.removeAllAnimations();
+            g_artworkImg.stopAnimating()
         }
         
-        g_isPlaying = !g_isPlaying
-        let img = g_isPlaying ? "player_btn_pause_normal" : "player_btn_play_normal"
+        let img = self.g_AVstate == .playing ? "player_btn_pause_normal" : "player_btn_play_normal"
         sender.setImage(UIImage.init(named: img), for: .normal)
     }
     @IBAction func clickNext(_ sender: UIButton) {
@@ -142,79 +150,54 @@ class MP3PlayerViewController: BaseViewController,AVAssetResourceLoaderDelegate 
         }
         self.dismiss(animated: true, completion: nil)
     }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
-                guard let item = object as? AVPlayerItem else { return }
-                if keyPath == AV_LOADED{
-                    
-                    let array = item.loadedTimeRanges
-                    let timeRange = array.first?.timeRangeValue
-                    
-                    let totalBuffer = CMTimeGetSeconds((timeRange?.start)!) + CMTimeGetSeconds((timeRange?.duration)!)
-                    let duration = CMTimeGetSeconds(item.duration)
-                    
-                    let scale = totalBuffer/duration
-                    self.g_loadBar.setProgress(Float(scale), animated: true)
-                    
-                    
-//                    let cur = self.g_avPlayer?.currentTime().value/self.g_avPlayer?.currentTime().timescale
-                    print("totalbuffer === ",totalBuffer)
-//                    if totalBuffer > 5
-//                    {
-//                        self.player().play()
-//                    }
-                }
-                else if keyPath == AV_STATUS{
-                    // 监听状态改变
-                    if item.status == AVPlayerItemStatus.readyToPlay{
-                        // 只有在这个状态下才能播放
-                        self.player().play()
-                    }else{
-                        print("加载异常")
-                    }
-                }
-                else if keyPath == AV_KEEPUP{
-                    
-                    self.player().play()
-                    
-                }
-    }
-    
-    
     func addObserver() {
-        self.player().currentItem?.addObserver(self, forKeyPath: AV_STATUS, options: NSKeyValueObservingOptions.new, context: nil)
-        self.player().currentItem?.addObserver(self, forKeyPath: AV_LOADED, options: NSKeyValueObservingOptions.new, context: nil)
-        self.player().currentItem?.addObserver(self, forKeyPath: AV_KEEPUP, options: NSKeyValueObservingOptions.new, context: nil)
         
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil, queue: nil, using: {_ in
-            print("播放完成")
-        })
-        // 进度条
-        self.player().addPeriodicTimeObserver(forInterval: CMTimeMake(1, 1), queue: nil, using: {time in
-            let current = CMTimeGetSeconds(time)
-//            self.g_progressBar.progress = Float(current / self.g_totalTime!)
-            self.g_curLab.text = AppUtil.converTime(Float(current))
-            self.g_avSlide.setValue(Float(current / self.g_totalTime!), animated: true)
-            if Float(current / self.g_totalTime!) >= 1{
-                NotificationCenter.default.post(name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
-            }
-        })
+        g_AVtimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(update), userInfo: nil, repeats: true)
     }
     
     func delObserver(){
-        g_avPlayer?.currentItem?.removeObserver(self, forKeyPath: AV_STATUS)
-        g_avPlayer?.currentItem?.removeObserver(self, forKeyPath: AV_LOADED)
-        g_avPlayer?.currentItem?.removeObserver(self, forKeyPath: AV_KEEPUP)
-        
-        NotificationCenter.default.removeObserver(NSNotification.Name.AVPlayerItemDidPlayToEndTime)
+        g_AVtimer?.invalidate()
     }
     
-    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, shouldWaitForLoadingOfRequestedResource loadingRequest: AVAssetResourceLoadingRequest) -> Bool {
-        print("1111")
-        return true
+    func update() {
+        if self.g_AVstate == .playing {
+            if self.g_AVcurTime > self.g_totalTime {
+                self.playNext()
+            }else {
+                if self.g_AVtimeStop {
+                    return
+                }
+                self.g_AVcurTime += 1
+                
+                if self.g_AVcurTime < self.g_totalTime {
+                    self.performSelector(onMainThread: #selector(updateUI), with: nil, waitUntilDone: false)
+                }
+            }
+        }
     }
     
-    func resourceLoader(_ resourceLoader: AVAssetResourceLoader, didCancel loadingRequest: AVAssetResourceLoadingRequest) {
+    func updateUI() {
+        self.g_curLab.text = AppUtil.converTime(self.g_AVcurTime)
+        self.g_avSlide.setValue(self.g_AVcurTime / self.g_totalTime, animated: true)
+
+    }
+    
+    func aqPlayer(_ player: AQPlayer!, duration d: TimeInterval, zeroCurrentTime flag: Bool) {
         
+        if flag {
+            self.g_AVcurTime = 0.0;
+        }
+        self.g_totalTime = Float(d)
+        self.g_AVstate = .playing
+        self.g_AVtimeStop = false
+    }
+    
+    func aqPlayer(_ player: AQPlayer!, timerStop flag: Bool) {
+        self.g_AVstate = .playing
+        self.g_AVtimeStop = flag
+    }
+    
+    func aqPlayer(_ player: AQPlayer!, playNext flag: Bool) {
+        self.playNext()
     }
 }

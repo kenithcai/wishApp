@@ -66,6 +66,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="intro_guide_bg2" translatesAutoresizingMaskIntoConstraints="NO" id="Rs4-vJ-ZR5">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="P6A-sL-CHd"/>
+                                    <constraint firstAttribute="height" constant="667" id="Zmz-ue-YvP"/>
+                                </constraints>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cS1-a0-U6u">
                                 <rect key="frame" x="16" y="28" width="20" height="22"/>
                                 <state key="normal" image="btn_list"/>
@@ -120,8 +127,10 @@
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xrC-Et-D3X" firstAttribute="leading" secondItem="cS1-a0-U6u" secondAttribute="leading" id="0iM-EH-nrQ"/>
+                            <constraint firstItem="Rs4-vJ-ZR5" firstAttribute="leading" secondItem="BqZ-f4-vX7" secondAttribute="leading" id="1VP-mC-a6R"/>
                             <constraint firstItem="hJE-Sc-uEN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="3" id="1vp-ni-ulJ"/>
                             <constraint firstItem="cS1-a0-U6u" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="EBW-HT-gel"/>
+                            <constraint firstItem="Rs4-vJ-ZR5" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="Ed0-kf-WEo"/>
                             <constraint firstItem="BqZ-f4-vX7" firstAttribute="leading" secondItem="0zQ-zB-5gV" secondAttribute="leading" id="Hii-LW-9bO"/>
                             <constraint firstItem="0zQ-zB-5gV" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Iiu-Tr-tZx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hJE-Sc-uEN" secondAttribute="trailing" constant="3" id="JJY-E7-raH"/>
@@ -138,6 +147,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="g_bgImg" destination="Rs4-vJ-ZR5" id="K6M-af-I8s"/>
                         <outlet property="g_contentLab" destination="xrC-Et-D3X" id="4b3-fu-ZfE"/>
                         <outlet property="g_likeNum" destination="FIM-5b-BHv" id="oHS-Ll-TQK"/>
                         <outlet property="g_settingBtn" destination="cS1-a0-U6u" id="QnR-uF-Iri"/>
@@ -324,6 +334,7 @@
         <image name="btn_close" width="20" height="20"/>
         <image name="btn_list" width="20" height="20"/>
         <image name="btn_share" width="20" height="20"/>
+        <image name="intro_guide_bg2" width="1472" height="2208"/>
         <image name="player_btn_next_normal" width="64" height="64"/>
         <image name="player_btn_play_normal" width="64" height="64"/>
         <image name="player_btn_playlist_highlight" width="50" height="50"/>

@@ -18,6 +18,7 @@ class ViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
         
+        g_imageView = g_bgImg
         //网络请求
         self.reloadData()
     }
@@ -30,6 +31,7 @@ class ViewController: UIViewController {
     var g_likeCount:Int = 0
     var g_contentId:Int = 0
     
+    @IBOutlet weak var g_bgImg: UIImageView!
     @IBOutlet weak var g_weatherLab: UILabel!
     @IBOutlet weak var g_contentLab: MyLabel!
     @IBOutlet weak var g_shareBtn: UIButton!
@@ -64,6 +66,9 @@ class ViewController: UIViewController {
                     self.g_contentId = (json?["id"] as? Int)!
                     // 显示图片
                     self.showImg(picUrl)
+                    if picUrl == nil {
+                        return
+                    }
                     // 显示文字
                     self.showLab(content, author: author)
                     // 显示天气
@@ -225,13 +230,12 @@ class ViewController: UIViewController {
     // 设置页面
     @IBAction func clickSetting(_ sender: UIButton) {
         
-        if g_imageView == nil {
-            return
+        if g_imageView != nil {
+            self.hiddenInfo(hidden: true)
+            
+            AppUtil.gaussianBlur(view: g_imageView!)
         }
         
-        self.hiddenInfo(hidden: true)
-
-        AppUtil.gaussianBlur(view: g_imageView!)
 //        AppUtil.addView(vc: self, name: "SettingViewController",closure: {self.hiddenInfo(hidden: false)})
         AppUtil.addView(vc: self, name: "MP3PlayerViewController",closure: {self.hiddenInfo(hidden: false)})
 

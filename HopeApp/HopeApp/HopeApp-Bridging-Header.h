@@ -5,3 +5,4 @@
 #import "WeixinSdk.h"
 #import "CMUUIDManager.h"
 #import "MyLabel.h"
+#import "AQPlayer.h"
