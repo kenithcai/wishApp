@@ -8,6 +8,7 @@
 
 #import "AQPlayer.h"
 #import <AVFoundation/AVFoundation.h>
+#include "MyTool.h"
 
 @implementation AQPlayer
 
@@ -45,6 +46,12 @@
 }
 
 - (void)play:(NSString*)url {
+    NSString *file = [MyTool readValueInAudioPlist:url];
+    if (file) {
+//        [self.converter doConvertFile:file];
+        [self AQDownloader:nil convert:file];
+        return;
+    }
     if (self.downloader == nil) {
         self.downloader = [[AQDownloader alloc] init];
         self.downloader.delegate = self;
@@ -86,8 +93,13 @@
         if (weak_self.converter == nil) {
             weak_self.converter = [[AQConverter alloc] init];
             weak_self.converter.delegate = weak_self;
-            [weak_self.converter setContentLength:weak_self.downloader.contentLength];
-            [weak_self.converter setBytesCanRead:weak_self.downloader.bytesReceived];
+            
+            if (weak_self.downloader)
+            {
+                [weak_self.converter setContentLength:weak_self.downloader.contentLength];
+                [weak_self.converter setBytesCanRead:weak_self.downloader.bytesReceived];
+            }
+            
         }
         [weak_self.converter doConvertFile:filePath];
     });

@@ -31,6 +31,39 @@
 	return filePath;
 }
 
++ (NSString*)makePlistInTmp:(NSString *)filename {
+    NSString *tmpPath = [MyTool makeTmpFilePath:filename];
+    NSDictionary* dic = [NSDictionary dictionaryWithContentsOfFile:tmpPath];
+    if (dic == nil) {
+        NSFileManager* fm = [NSFileManager defaultManager];
+        [fm createFileAtPath:tmpPath contents:nil attributes:nil];
+        NSMutableDictionary *mdic = [[NSMutableDictionary alloc] init];
+        [mdic writeToFile:tmpPath atomically:YES];
+    }
+    return tmpPath;
+}
+
++ (void)addValue:(NSString *)plistPath key:(NSString *)key value:(NSString *)value {
+    NSLog(@"key == %@,value == %@",key,value);
+    NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithContentsOfFile:plistPath];
+    
+    [dic setObject:value forKey:key];
+    [dic writeToFile:plistPath atomically:YES];
+}
++(NSString*)readValue:(NSString *)plistPath key:(NSString *)key {
+    NSDictionary* dic = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+    if (dic == nil) {
+        return nil;
+    }
+    return [dic objectForKey:key];
+}
++(NSString*)readValueInAudioPlist:(NSString *)key {
+    NSString *path = [MyTool makePlistInTmp:DOWN_PLIST];
+    NSString *file = [MyTool readValue:path key:key];
+    return file;
+}
+
+
 + (void)makeDir:(NSString*)dir {
 	NSFileManager *fm = [NSFileManager defaultManager];
 	

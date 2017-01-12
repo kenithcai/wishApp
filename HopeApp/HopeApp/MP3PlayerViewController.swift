@@ -24,7 +24,8 @@ class MP3PlayerViewController: BaseViewController,AQPlayerDelegate {
     let AV_STATUS = "status"
     let AV_LOADED = "loadedTimeRanges"
     let AV_KEEPUP = "playbackLikelyToKeepUp"
-    let AV_URLStr = "http://blog.fathoo.xyz/music/%E4%B8%83%E7%99%BE%E5%B9%B4%E5%90%8E.mp3"
+    let AV_URLStr = "http://blog.fathoo.xyz/music/%E8%A3%99%E4%B8%8B%E4%B9%8B%E8%87%A3.mp3"
+//    "http://blog.fathoo.xyz/music/%E4%B8%83%E7%99%BE%E5%B9%B4%E5%90%8E.mp3"
     
     @IBOutlet weak var g_avSlide: UISlider!
     @IBOutlet weak var g_musicTitle: UILabel!

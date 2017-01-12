@@ -9,6 +9,7 @@
 #import "AQDownloader.h"
 #import "MyTool.h"
 
+
 @interface AQDownloader ()
 
 @property (nonatomic, strong) NSString *fileName;
@@ -151,7 +152,8 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     NSLog(@"+++++++++++++connectionDidFinishLoading: %@+++++++++++++\n", self.fileName);
-    
+    NSString *path = [MyTool makePlistInTmp:DOWN_PLIST];
+    [MyTool addValue:path key:self.url value:self.downloadFilePath];
     if (self.converted) {
         [self signal:YES];
         [self closeFile];

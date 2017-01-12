@@ -21,6 +21,8 @@ class ViewController: UIViewController {
         g_imageView = g_bgImg
         //网络请求
         self.reloadData()
+        let path = MyTool.makePlist(inTmp: "checkDown.plist")
+        MyTool.addValue(path, key: "test4", value: "1234")
     }
     
     
